@@ -1,0 +1,43 @@
+.registration{
+    width : 40vw;
+    margin: auto;
+
+    h1{
+        font-size: 2rem;
+        line-height: 3;
+        text-align: center;
+    }
+
+    &-form{
+        display: flex;
+        flex-direction: column;
+
+        input{
+            line-height: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            padding-left: 1rem;
+        }
+
+        &__submit{
+            background-color: lightsalmon;
+            width: 40%;
+            margin: auto;
+            margin-top: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            height: 4rem;
+        }
+    }
+}
+
+@media screen and (max-width: 812px) and (orientation: landscape) {
+    .registration-form {
+      // transform: rotate(-90deg);
+    }
+
+    input{
+        width: 100%;
+    }
+  }
+  

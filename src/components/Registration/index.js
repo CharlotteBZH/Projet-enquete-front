@@ -6,33 +6,38 @@ function Registration(props) {
     <div className="registration">
       <h1>Formulaire d'inscription</h1>
 
-      <form>
+      <form className="registration-form">
         <input
           type="text"
           value=""
           placeholder="Entrez votre pseudo"
+          required
         />
         <input
           type="mail"
           value=""
           placeholder="Entrez votre mail"
+          required
         />
         <input
           type="mail"
           value=""
           placeholder="Confirmez votre mail"
+          required
         />
         <input
           type="text"
           value=""
           placeholder="Entrez votre mot de passe"
+          required
         />
         <input
           type="text"
           value=""
           placeholder="Confirmez votre mot de passe"
+          required
         />
-        <input
+        <input className="registration-form__submit"
           type="submit"
           value="S'inscrire"
         />
