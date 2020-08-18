@@ -4,7 +4,7 @@ import './style.scss';
 function Connexion() {
   return (
     <div className="connexion">
-      <h1>Composant Connexion</h1>
+      <h1>Se connecter</h1>
     </div>
   );
 }

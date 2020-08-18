@@ -3,10 +3,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  //Link
 } from "react-router-dom";
-import logo from './logo.svg';
+
 import './style.scss';
+// == Import composants
+import Home from '../Home';
+import Connexion from '../Connexion';
+import Registration from '../Registration';
+import Game from '../Game';
 
 function App() {
   return (

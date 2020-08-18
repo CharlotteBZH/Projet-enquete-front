@@ -4,7 +4,7 @@ import './style.scss';
 function Alias() {
   return (
     <div className="alias">
-      <h1>Composant Alias</h1>
+      <h1>Bienvenue Alias</h1>
     </div>
   );
 }
