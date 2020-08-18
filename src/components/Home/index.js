@@ -7,12 +7,16 @@ import './style.scss';
 function Home() {
   return (
       <div className="home">
-        <h1 className="title">Enquête CLUED'O</h1>
+        <span className="title-game">
+          <h1>Enquête CLUED'O</h1>
+        </span>
+        <span className="play-game">
         <button 
           className="play"
           type="button">
           Jouer
         </button>
+          </span>
         <div className="tolog">
           <div className="pseudo">Pseudo</div>
           <div>Incription</div>
