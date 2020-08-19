@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.scss';
+import { Link } from "react-router-dom";
 
 function Log() {
   return (
@@ -7,9 +8,11 @@ function Log() {
 
 
       <div>
-        <span className="log-inscription">Incription</span> | <span className="log-connexion">Connexion</span>
+        <Link to={`/logon`}> <span className="log-inscription">Incription</span></Link>
+         |
+      <Link to={`/login`}><span className="log-connexion">Connexion</span></Link>
       </div>
-    </div>
+    </div >
   );
 }
 
