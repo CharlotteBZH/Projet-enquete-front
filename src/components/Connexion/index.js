@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-function Connexion() {
+const Connexion = () => {
   return (
     <div className="connexion">
       <h1>Se connecter</h1>

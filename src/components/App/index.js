@@ -13,7 +13,7 @@ import Connexion from '../Connexion';
 import Registration from '../Registration';
 import Game from '../Game';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="App">

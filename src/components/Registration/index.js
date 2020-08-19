@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-function Registration(props) {
+const Registration = (props) => {
   return (
     <div className="registration">
       <h1>Formulaire d'inscription</h1>
