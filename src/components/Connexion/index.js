@@ -18,7 +18,7 @@ const Connexion = ({ mail, pwd }) => {
         />
 
         <input
-          type="text"
+          type="password"
           value={pwd}
           placeholder="Entrez votre mot de passe"
           required

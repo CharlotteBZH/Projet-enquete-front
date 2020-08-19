@@ -1,7 +1,9 @@
 import React from 'react';
 import './style.scss';
 
-const Registration = (props) => {
+import PropTypes from "prop-types";
+
+const Registration = ({ pseudo, mail, pwd }) => {
   return (
     <div className="registration">
       <h1>Formulaire d'inscription</h1>
@@ -9,31 +11,31 @@ const Registration = (props) => {
       <form className="registration-form">
         <input
           type="text"
-          value=""
+          value={pseudo}
           placeholder="Entrez votre pseudo"
           required
         />
         <input
           type="mail"
-          value=""
+          value={mail}
           placeholder="Entrez votre mail"
           required
         />
         <input
           type="mail"
-          value=""
+          value={mail}
           placeholder="Confirmez votre mail"
           required
         />
         <input
-          type="text"
-          value=""
+          type="password"
+          value={pwd}
           placeholder="Entrez votre mot de passe"
           required
         />
         <input
-          type="text"
-          value=""
+          type="password"
+          value={pwd}
           placeholder="Confirmez votre mot de passe"
           required
         />
@@ -45,6 +47,12 @@ const Registration = (props) => {
 
     </div>
   );
-}
+};
+
+Registration.propTypes = {
+  pseudo: PropTypes.string.isRequired,
+  mail: PropTypes.string.isRequired,
+  pwd: PropTypes.string.isRequired
+};
 
 export default Registration;

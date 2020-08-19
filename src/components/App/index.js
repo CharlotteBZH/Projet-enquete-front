@@ -23,7 +23,7 @@ const App = () => {
           </Route>
 
           <Route exact path="/logon">
-            <Registration />
+            <Registration pseudo="mypseudo" mail="mymail@gmail.com" pwd="1234" />
           </Route>
 
           <Route exact path="/login">
