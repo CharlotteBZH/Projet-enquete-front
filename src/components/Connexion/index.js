@@ -1,7 +1,9 @@
 import React from 'react';
 import './style.scss';
 
-const Connexion = () => {
+import PropTypes from "prop-types";
+
+const Connexion = ({ mail, pwd }) => {
   return (
     <div className="connexion">
       <h1>Se connecter</h1>
@@ -10,14 +12,14 @@ const Connexion = () => {
 
         <input
           type="mail"
-          value=""
+          value={mail}
           placeholder="Entrez votre mail"
           required
         />
 
         <input
           type="text"
-          value=""
+          value={pwd}
           placeholder="Entrez votre mot de passe"
           required
         />
@@ -31,6 +33,11 @@ const Connexion = () => {
     </div>
 
   );
-}
+};
+
+Connexion.propTypes = {
+  mail: PropTypes.string.isRequired,
+  pwd: PropTypes.string.isRequired
+};
 
 export default Connexion;

@@ -27,7 +27,7 @@ const App = () => {
           </Route>
 
           <Route exact path="/login">
-            <Connexion />
+            <Connexion mail="mymail@gmail.com" pwd="1234" />
           </Route>
 
           <Route exact path="/play">
