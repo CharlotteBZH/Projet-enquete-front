@@ -6,7 +6,7 @@ function Connexion() {
     <div className="connexion">
       <h1>Se connecter</h1>
 
-      <form className="registration-form">
+      <form className="connexion-form">
 
         <input
           type="mail"
@@ -22,7 +22,7 @@ function Connexion() {
           required
         />
 
-        <input className="registration-form__submit"
+        <input className="connexion-form__submit"
           type="submit"
           value="Se connecter"
         />
