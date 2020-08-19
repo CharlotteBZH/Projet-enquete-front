@@ -14,15 +14,13 @@ function Game() {
     <div className="game">
       <h1>Composant Game</h1>
       <Connexion />
-      <Tag tagName="toto"/>
+      <Tag />
       <Headband />
     </div>
   );
 }
 
 export default Game;
-
-
 
 
 function Tag({tagName}) {
@@ -36,8 +34,8 @@ function Tag({tagName}) {
 function Headband() {
   return (
     <div className="headband">
-      <Text naration="Hello World"/>
-      <Selection question="tu penses que...?"/>
+      <Text />
+      <Selection />
       <ButtonNext />
     </div>
   );
@@ -69,3 +67,5 @@ function ButtonNext() {
     </div>
   );
 }
+
+

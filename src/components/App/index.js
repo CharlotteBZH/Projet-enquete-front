@@ -8,8 +8,8 @@ import {
 
 import './style.scss';
 // == Import composants
-import Home from '../Home';
-import Connexion from '../Connexion';
+import Home from '../containers/Home';
+import Connexion from '../containers/Connexion';
 import Registration from '../Registration';
 import Game from '../Game';
 
@@ -19,15 +19,15 @@ const App = () => {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Home connected={false} />
+            <Home />
           </Route>
 
           <Route exact path="/logon">
-            <Registration pseudo="mypseudo" mail="mymail@gmail.com" pwd="1234" />
+            <Registration />
           </Route>
 
           <Route exact path="/login">
-            <Connexion mail="mymail@gmail.com" pwd="1234" />
+            <Connexion  />
           </Route>
 
           <Route exact path="/play">
