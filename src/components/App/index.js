@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,8 +10,8 @@ import './style.scss';
 // == Import composants
 import Home from '../containers/Home';
 import Connexion from '../containers/Connexion';
-import Registration from '../Registration';
-import Game from '../Game';
+import Registration from '../containers/Registration';
+import Game from '../containers/Game';
 
 const App = () => {
   return (

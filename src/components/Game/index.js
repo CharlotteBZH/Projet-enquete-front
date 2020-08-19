@@ -4,9 +4,10 @@ import './headBand.scss';
 import './buttonNext.scss';
 import './text.scss';
 import './selection.scss';
+import PropTypes from "prop-types";
 
 
-import Connexion from '../Connexion';
+import Connexion from '../containers/Connexion';
 //import Menu from '../Menu';
 
 function Game() {
@@ -69,3 +70,28 @@ function ButtonNext() {
 }
 
 
+Game.propTypes = {
+  connected: PropTypes.bool.isRequired
+};
+
+
+Tag.propTypes = {
+  connected: PropTypes.bool.isRequired
+};
+
+HeadBand.propTypes = {
+  connected: PropTypes.bool.isRequired
+};
+
+Text.propTypes = {
+  connected: PropTypes.bool.isRequired
+};
+
+
+Selection.propTypes = {
+  connected: PropTypes.bool.isRequired
+};
+
+ButtonNext.propTypes = {
+  connected: PropTypes.bool.isRequired
+};
