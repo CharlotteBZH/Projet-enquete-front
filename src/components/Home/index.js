@@ -5,8 +5,10 @@ import './style.scss';
 import Alias from '../Alias';
 import Log from '../Log';
 
+import PropTypes from "prop-types";
 
-function Home({ connected }) {
+
+const Home = ({ connected }) => {
   return (
     <div className="home">
       <span className="title-game">
@@ -27,6 +29,11 @@ function Home({ connected }) {
       </div>
     </div>
   );
-}
+};
+
+Home.propTypes = {
+  connected: PropTypes.bool.isRequired
+};
+
 
 export default Home;
