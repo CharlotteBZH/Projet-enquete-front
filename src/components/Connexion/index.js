@@ -3,7 +3,14 @@ import './style.scss';
 
 import PropTypes from "prop-types";
 
-const Connexion = ({ mail, pwd, handleSubmit, changeField, handleLogIn}) => {
+
+const handleSubmit = (evt) => {
+  evt.preventDefault();
+  onFormLogin();
+};
+
+
+const Connexion = ({ mail, pwd, changeField, handleLogIn}) => {
   return (
     <div className="connexion">
       <h1>Se connecter</h1>
@@ -34,7 +41,7 @@ const Connexion = ({ mail, pwd, handleSubmit, changeField, handleLogIn}) => {
         <input className="connexion-form__submit"
           type="submit"
           value="Se connecter"
-          onClick={handleLogIn(evt)}
+          onClick={handleLogIn}
         />
       </form>
 

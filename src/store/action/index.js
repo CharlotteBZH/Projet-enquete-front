@@ -1,6 +1,7 @@
 
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const LOGIN = 'LOGIN';
+export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 
 
 export const changeField = (payload) => ({
@@ -8,6 +9,11 @@ export const changeField = (payload) => ({
     payload
   });
 
-export const login = () => ({
+export const login = (payload) => ({
     type: LOGIN,
+    payload
   });
+
+export const loginSubmit = () => ({
+  type: LOGIN_SUBMIT,
+});

@@ -1,10 +1,17 @@
 import { connect } from 'react-redux';
 import Connexion from "../components/Connexion"
+import {
+    login,
+    changeField,
+    loginSubmit,
+  } from "../store/action";
+
 
 const mapState=(state)=>({
     mail : state.user.mail,
     pwd: state.user.pdw,
 });
+
 
 const mapDispatch = (dispatch) => ({
     changeField: (value, name) => {
@@ -18,7 +25,11 @@ const mapDispatch = (dispatch) => ({
     handleLogin: () => {
         console.log('login');
         dispatch(login());
-    }
+    },
+    onFormLogin: () => {
+        console.log("Il ya eu submit !");
+        dispatch(loginSubmit());
+      },
 });
 
 
