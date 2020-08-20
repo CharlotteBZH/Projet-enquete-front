@@ -1,4 +1,4 @@
-import { LOGIN_SUBMIT, LOGIN_INPUT_CHANGE } from "../action";
+import { LOGIN_SUBMIT, LOGIN_INPUT_CHANGE, REGISTRATION_SUBMIT, REGISTRATION_INPUT_CHANGE } from "../action";
 
 const initialState = {
   user: {
@@ -10,6 +10,7 @@ const initialState = {
     connected: false,
   },
   loading: false,
+  logged: false,
   game: {
     tagName: "toto",
     narration: "Hello World",
@@ -30,8 +31,22 @@ export default (state = initialState, action = {}) => {
             user: {
               ...state.user,
               ...action.payload,
-        },
-      };      
+            },
+          };
+        case REGISTRATION_SUBMIT :
+          return {
+            ...state,
+            loading: true,
+          };
+        case REGISTRATION_INPUT_CHANGE :
+          return {
+            ...state,
+            user: {
+              ...state.user,
+              ...action.payload,
+            },
+          };    
+              
       default:
       return state;
      }
