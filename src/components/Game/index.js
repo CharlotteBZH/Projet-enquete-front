@@ -42,10 +42,10 @@ function Headband() {
   );
 }
 
-function Text({naration}) {
+function Text({narration}) {
   return (
     <div className="text">
-      <p>{naration}</p>
+      <p>{narration}</p>
     </div>
   );
 }
@@ -70,28 +70,19 @@ function ButtonNext() {
 }
 
 
-Game.propTypes = {
-  connected: PropTypes.bool.isRequired
-};
 
 
 Tag.propTypes = {
-  connected: PropTypes.bool.isRequired
+  tagName: PropTypes.string.isRequired
 };
 
-HeadBand.propTypes = {
-  connected: PropTypes.bool.isRequired
-};
 
 Text.propTypes = {
-  connected: PropTypes.bool.isRequired
+  narration: PropTypes.string.isRequired
 };
 
 
 Selection.propTypes = {
-  connected: PropTypes.bool.isRequired
+  question: PropTypes.string.isRequired
 };
 
-ButtonNext.propTypes = {
-  connected: PropTypes.bool.isRequired
-};

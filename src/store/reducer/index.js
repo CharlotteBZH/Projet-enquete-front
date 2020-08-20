@@ -9,9 +9,9 @@ export const initialState = {
   },
   connected : false,
   game: {
-    tagName: "toto",
-    narration: "Hello World",
-    question: "tu penses que... ?"
+    tagName: {"toto"},
+    narration: {"Hello World"},
+    question: {"tu penses que... ?"}
   },
 
 };
