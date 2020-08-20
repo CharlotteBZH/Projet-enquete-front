@@ -4,13 +4,29 @@ import './style.scss';
 import PropTypes from "prop-types";
 
 
-const handleSubmit = (evt) => {
-  evt.preventDefault();
-  onFormLogin();
-};
 
+const Connexion = ({ 
 
-const Connexion = ({ mail, pwd, changeField, handleLogIn}) => {
+// data qui vient du state
+mail, 
+pwd,
+// function qui dispatch
+onInputChange,
+onFormLogin,
+}) => {
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onFormLogin();
+  };
+  
+  const handleInputChange = (evt) => {
+    const { name, value } = evt.target;
+    onInputChange({
+      [name]: value,
+    });
+  };
+
   return (
     <div className="connexion">
       <h1>Se connecter</h1>
@@ -26,22 +42,21 @@ const Connexion = ({ mail, pwd, changeField, handleLogIn}) => {
           value={mail}
           placeholder="Entrez votre mail"
           required
-          onChange={changeField}
+          onChange={handleInputChange}
         />
 
         <input
           type="password"
-          name="password"
+          name="pdw"
           value={pwd}
           placeholder="Entrez votre mot de passe"
           required
-          onChange={changeField}
+          onChange={handleInputChange}
         />
 
         <input className="connexion-form__submit"
           type="submit"
           value="Se connecter"
-          onClick={handleLogIn}
         />
       </form>
 

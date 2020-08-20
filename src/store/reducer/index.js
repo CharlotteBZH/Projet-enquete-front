@@ -1,4 +1,4 @@
-//import { GET_RECIPES } from "../action";
+import { LOGIN_SUBMIT, LOGIN_INPUT_CHANGE } from "../action";
 
 const initialState = {
   user: {
@@ -9,6 +9,7 @@ const initialState = {
   connected: {
     connected: false,
   },
+  loading: false,
   game: {
     tagName: "toto",
     narration: "Hello World",
@@ -17,14 +18,21 @@ const initialState = {
 };
 
 export default (state = initialState, action = {}) => {
-  console.log("coucou");
-  //   switch (action.type) {
-  //     case GET_RECIPES:
-  //       return {
-  //         ...state,
-  //         loading: true
-  //       };
-  //     default:
-  //       return state;
-  //   }
+     switch (action.type) {
+       case LOGIN_SUBMIT:
+         return {
+          ...state,
+          loading: true,
+        };
+        case LOGIN_INPUT_CHANGE:
+          return {
+            ...state,
+            user: {
+              ...state.user,
+              ...action.payload,
+        },
+      };      
+      default:
+      return state;
+     }
 };
