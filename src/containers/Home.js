@@ -3,9 +3,9 @@ import Home from '../components/Home';
 
 
 const mapState=(state)=>({
-    connected: state.connected,
+    // connected: state.connected.connected,
 });
 
-const mapDispatch ;
+const mapDispatch =null;
 
 export default connect(mapState, mapDispatch)(Home);

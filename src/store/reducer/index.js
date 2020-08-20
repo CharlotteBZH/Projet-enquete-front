@@ -1,31 +1,30 @@
 //import { GET_RECIPES } from "../action";
 
-
-export const initialState = {
+const initialState = {
   user: {
     pseudo: "mypseudo",
     mail: "mymail@gmail.com",
-    pwd: 1234
+    pwd: 1234,
   },
-  connected : false,
+  connected: {
+    connected: false,
+  },
   game: {
-    tagName: {"toto"},
-    narration: {"Hello World"},
-    question: {"tu penses que... ?"}
+    tagName: "toto",
+    narration: "Hello World",
+    question: "tu penses que... ?",
   },
-
 };
 
-// export default (state = initialState, action = {}) => {
-//   switch (action.type) {
-//     case GET_RECIPES:
-//       return {
-//         ...state,
-//         loading: true
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
-
+export default (state = initialState, action = {}) => {
+  console.log("coucou");
+  //   switch (action.type) {
+  //     case GET_RECIPES:
+  //       return {
+  //         ...state,
+  //         loading: true
+  //       };
+  //     default:
+  //       return state;
+  //   }
+};

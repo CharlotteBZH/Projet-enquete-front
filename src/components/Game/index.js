@@ -7,7 +7,7 @@ import './selection.scss';
 import PropTypes from "prop-types";
 
 
-import Connexion from '../containers/Connexion';
+import Connexion from '../../containers/Connexion';
 //import Menu from '../Menu';
 
 function Game() {

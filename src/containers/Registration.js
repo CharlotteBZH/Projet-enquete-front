@@ -7,6 +7,6 @@ const mapState=(state)=>({
     pwd: state.user.pdw,
 });
 
-const mapDispatch ;
+const mapDispatch=null;
 
 export default connect(mapState, mapDispatch)(Registration);

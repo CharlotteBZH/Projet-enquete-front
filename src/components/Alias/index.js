@@ -1,11 +1,10 @@
 import React from 'react';
 import './style.scss';
 
-function Alias() {
+function Alias({pseudo}) {
   return (
     <div className="alias">
-      <div className="pseudo">Pseudo</div>
-
+      <div className="pseudo">{pseudo}</div>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import Alias from '../components/Alias';
 
-const mapState;
+const mapState=(state)=>({
+    pseudo:state.user.pseudo
+});
 
-const mapDispatch;
+const mapDispatch =null;
 
 export default connect(mapState, mapDispatch)(Alias);

@@ -6,9 +6,21 @@ const mapState=(state)=>({
     pwd: state.user.pdw,
 });
 
-const mapDispatch ;
+const mapDispatch = (dispatch) => ({
+    changeField: (value, name) => {
+        const changeObject = {
+          [name]: value
+        };
+        console.log(changeObject)
+        dispatch(changeField(changeObject));
+    
+    }, 
+    handleLogin: () => {
+        console.log('login');
+        dispatch(login());
+    }
+});
+
 
 export default connect(mapState, mapDispatch)(Connexion);
-
-
 
