@@ -9,7 +9,7 @@ const initialState = {
     checkPwd:"",
   },
   connected: {
-    connected: false,
+    connected: true,
   },
   loading: false,
   logged: false,

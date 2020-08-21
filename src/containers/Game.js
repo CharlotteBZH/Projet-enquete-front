@@ -3,9 +3,7 @@ import Game from '../components/Game';
 
 
 const mapState=(state)=>({
-    tagName: state.game.tagName,
-    narration: state.game.narration,
-    question: state.game.question,
+    game : state.game,
 });
 
 const mapDispatch = null;

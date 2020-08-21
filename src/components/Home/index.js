@@ -15,13 +15,16 @@ const Home = ({ connected }) => {
         <h1>Enquête CLUED'O</h1>
       </span>
 
+   
       <Link to={`/play`} >
         <button
           className="play"
           type="button">
           Jouer
         </button>
-      </Link>
+      </Link> 
+     
+      
 
       <div className="tolog">
         {connected ? <Alias /> : <Log />}
@@ -37,3 +40,22 @@ Home.propTypes = {
 
 
 export default Home;
+
+
+/*{connected && 
+  <Link to={`/play`} >
+    <button
+      className="play"
+      type="button">
+      Jouer
+    </button>
+  </Link> 
+  }
+  {!connected &&        
+  <button
+    className="play"
+    disabled
+    type="button">
+    Jouer
+  </button>
+  }*/

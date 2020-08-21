@@ -7,15 +7,15 @@ import './selection.scss';
 import PropTypes from "prop-types";
 
 
-import Connexion from '../../containers/Connexion';
+//import Connexion from '../../containers/Connexion';
 //import Menu from '../Menu';
 
-function Game() {
+function Game({game}) {
   return (
     <div className="game">
       <h1>Composant Game</h1>
-      <Tag />
-      <Headband />
+      <Tag {...game}/>
+      <Headband {...game} />
     </div>
   );
 }
@@ -31,10 +31,10 @@ function Tag({tagName}) {
   );
 }
 
-function Headband() {
+function Headband({narration}) {
   return (
     <div className="headband">
-      <Text />
+      <Text narration={narration}/>
       <Selection />
       <ButtonNext />
     </div>
