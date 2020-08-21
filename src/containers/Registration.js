@@ -8,7 +8,10 @@ import {
 const mapState=(state)=>({
     pseudo: state.user.pseudo,
     mail: state.user.mail,
-    pwd: state.user.pdw,
+    checkMail: state.user.checkMail,
+    pwd: state.user.pwd,
+    checkPwd: state.user.checkPwd,
+    
 });
 
 const mapDispatch = (dispatch) => ({

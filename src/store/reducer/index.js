@@ -2,9 +2,11 @@ import { LOGIN_SUBMIT, LOGIN_INPUT_CHANGE, REGISTRATION_SUBMIT, REGISTRATION_INP
 
 const initialState = {
   user: {
-    pseudo: "mypseudo",
-    mail: "mymail@gmail.com",
-    pwd: 1234,
+    pseudo: "",
+    mail: "",
+    checkMail: "",
+    pwd:"",
+    checkPwd:"",
   },
   connected: {
     connected: false,

@@ -7,7 +7,9 @@ const Registration = ({
   // data qui vient du state
   pseudo,
   mail, 
+  checkMail, 
   pwd,
+  checkPwd,
   // function qui dispatch
   onInputChange,
   onFormRegistration,
@@ -44,15 +46,15 @@ const Registration = ({
           type="mail"
           name="mail"
           value={mail}
-          placeholder="Entrez votre mail"
+          placeholder="Confirmez votre mail"
           required
           onChange={handleInputChange}
         />
         <input
           type="mail"
-          name="mail"
-          value={mail}
-          placeholder="Confirmez votre mail"
+          name="checkMail"
+          value={checkMail}
+          placeholder="Entrez votre mail"
           required
           onChange={handleInputChange}
         />
@@ -66,8 +68,8 @@ const Registration = ({
         />
         <input
           type="password"
-          name="pwd"
-          value={pwd}
+          name="checkPwd"
+          value={checkPwd}
           placeholder="Confirmez votre mot de passe"
           required
           onChange={handleInputChange}
