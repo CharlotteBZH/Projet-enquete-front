@@ -14,7 +14,6 @@ function Game() {
   return (
     <div className="game">
       <h1>Composant Game</h1>
-      <Connexion />
       <Tag />
       <Headband />
     </div>

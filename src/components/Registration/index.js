@@ -46,7 +46,7 @@ const Registration = ({
           type="mail"
           name="mail"
           value={mail}
-          placeholder="Confirmez votre mail"
+          placeholder="Entrez votre mail"
           required
           onChange={handleInputChange}
         />
@@ -54,7 +54,7 @@ const Registration = ({
           type="mail"
           name="checkMail"
           value={checkMail}
-          placeholder="Entrez votre mail"
+          placeholder="Confirmez votre mail"
           required
           onChange={handleInputChange}
         />
