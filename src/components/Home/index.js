@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './style.scss';
 
-import Alias from '../../containers/Alias';
+//import Alias from '../../containers/Alias';
 import Log from '../../containers/Log';
 
 import PropTypes from "prop-types";
@@ -27,8 +27,7 @@ const Home = ({ connected }) => {
       
 
       <div className="tolog">
-        {connected ? <Alias /> : <Log />}
-        {console.log(connected)}
+        <Log />
       </div>
     </div>
   );
@@ -59,3 +58,7 @@ export default Home;
     Jouer
   </button>
   }*/
+
+
+  /*{connected ? <Alias /> : <Log />}
+        {console.log(connected)}*/
