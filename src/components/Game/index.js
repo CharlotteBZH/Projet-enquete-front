@@ -1,4 +1,6 @@
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Icon } from 'semantic-ui-react';
 import './style.scss';
 import './headBand.scss';
 import './buttonNext.scss';
@@ -27,6 +29,7 @@ function Tag({tagName}) {
   return (
     <div className="tag">
       <h2>{tagName}</h2>
+      <Icon name='user'/>
     </div>
   );
 }
@@ -63,13 +66,10 @@ function Selection({question}) {
 function ButtonNext() {
   return (
     <div className="buttonNext">
-      <h1>></h1>
+      <Icon circular inverted color='grey' name='play' size='big' /> 
     </div>
   );
 }
-
-
-
 
 Tag.propTypes = {
   tagName: PropTypes.string.isRequired

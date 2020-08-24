@@ -1,8 +1,12 @@
-.text{
-    margin: auto;
-    padding: 3.5rem;
-    position: relative;
-    bottom: -25px;
-    width: 75%;
-    background-color: rgba(255, 255, 255, 0.349);
+.text {
+  font-size: 1.8rem;
+  margin: 30px;
+  padding: 2rem;
+  position: relative;
+  width: 75%;
+  background-color: rgba(255, 255, 255, 0.349);
+}
+
+.text p{
+  line-height: 1.8em;
 }
