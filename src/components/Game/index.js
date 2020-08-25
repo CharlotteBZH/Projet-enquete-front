@@ -6,6 +6,7 @@ import './headBand.scss';
 import './buttonNext.scss';
 import './text.scss';
 import './selection.scss';
+import './tag.scss';
 import PropTypes from "prop-types";
 
 
@@ -29,7 +30,7 @@ function Tag({tagName}) {
   return (
     <div className="tag">
       <h2>{tagName}</h2>
-      <Icon name='user'/>
+      <Icon name='user' className='userLogo' />
     </div>
   );
 }
