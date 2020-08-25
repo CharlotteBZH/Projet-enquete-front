@@ -8,11 +8,9 @@ const initialState = {
     pwd:"",
     checkPwd:"",
   },
-  connected: {
-    connected: true,
-  },
+  connected:  false,
   loading: false,
-  logged: false,
+  //logged: false,
   game: {
     tagName: "toto",
     narration: "Hello World",
