@@ -3,41 +3,76 @@ import './style.scss';
 
 import PropTypes from "prop-types";
 
-const Registration = ({ pseudo, mail, pwd }) => {
+const Registration = ({
+  // data qui vient du state
+  pseudo,
+  mail, 
+  checkMail, 
+  pwd,
+  checkPwd,
+  // function qui dispatch
+  onInputChange,
+  onFormRegistration,
+  }) => {
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onFormRegistration();
+  };
+  
+  const handleInputChange = (evt) => {
+    const { name, value } = evt.target;
+    onInputChange({
+      [name]: value,
+    });
+  };
   return (
     <div className="registration">
       <h1>Formulaire d'inscription</h1>
 
-      <form className="registration-form">
+      <form 
+      className="registration-form"
+      onSubmit={handleSubmit}
+      >
         <input
           type="text"
+          name="pseudo"
           value={pseudo}
           placeholder="Entrez votre pseudo"
           required
+          onChange={handleInputChange}
         />
         <input
           type="mail"
+          name="mail"
           value={mail}
           placeholder="Entrez votre mail"
           required
+          onChange={handleInputChange}
         />
         <input
           type="mail"
-          value={mail}
+          name="checkMail"
+          value={checkMail}
           placeholder="Confirmez votre mail"
           required
+          onChange={handleInputChange}
         />
         <input
           type="password"
+          name="pwd"
           value={pwd}
           placeholder="Entrez votre mot de passe"
           required
+          onChange={handleInputChange}
         />
         <input
           type="password"
-          value={pwd}
+          name="checkPwd"
+          value={checkPwd}
           placeholder="Confirmez votre mot de passe"
           required
+          onChange={handleInputChange}
         />
         <input className="registration-form__submit"
           type="submit"
@@ -48,6 +83,7 @@ const Registration = ({ pseudo, mail, pwd }) => {
     </div>
   );
 };
+
 
 Registration.propTypes = {
   pseudo: PropTypes.string.isRequired,

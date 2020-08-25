@@ -10,7 +10,7 @@ const Log = () => {
       <div>
         <Link to={`/logon`}> <span className="log-inscription">Incription</span></Link>
          |
-      <Link to={`/login`}><span className="log-connexion">Connexion</span></Link>
+        <Link to={`/login`}><span className="log-connexion">Connexion</span></Link>
       </div>
     </div >
   );

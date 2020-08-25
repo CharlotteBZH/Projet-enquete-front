@@ -1,21 +1,24 @@
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+import { Icon } from 'semantic-ui-react';
 import './style.scss';
 import './headBand.scss';
 import './buttonNext.scss';
 import './text.scss';
 import './selection.scss';
+import './tag.scss';
+import PropTypes from "prop-types";
 
 
-import Connexion from '../Connexion';
+//import Connexion from '../../containers/Connexion';
 //import Menu from '../Menu';
 
-function Game() {
+function Game({game}) {
   return (
     <div className="game">
       <h1>Composant Game</h1>
-      <Connexion />
-      <Tag />
-      <Headband />
+      <Tag {...game}/>
+      <Headband {...game} />
     </div>
   );
 }
@@ -27,24 +30,25 @@ function Tag({tagName}) {
   return (
     <div className="tag">
       <h2>{tagName}</h2>
+      <Icon name='user' className='userLogo' />
     </div>
   );
 }
 
-function Headband() {
+function Headband({narration}) {
   return (
     <div className="headband">
-      <Text />
+      <Text narration={narration}/>
       <Selection />
       <ButtonNext />
     </div>
   );
 }
 
-function Text({naration}) {
+function Text({narration}) {
   return (
     <div className="text">
-      <p>{naration}</p>
+      <p>{narration}</p>
     </div>
   );
 }
@@ -63,9 +67,22 @@ function Selection({question}) {
 function ButtonNext() {
   return (
     <div className="buttonNext">
-      <h1>></h1>
+      <Icon circular inverted color='grey' name='play' size='big' /> 
     </div>
   );
 }
 
+Tag.propTypes = {
+  tagName: PropTypes.string.isRequired
+};
+
+
+Text.propTypes = {
+  narration: PropTypes.string.isRequired
+};
+
+
+Selection.propTypes = {
+  question: PropTypes.string.isRequired
+};
 

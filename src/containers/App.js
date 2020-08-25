@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
 
-const mapState;
+const mapState=null;
 
-const mapDispatch;
+const mapDispatch=null;
 
 export default connect(mapState, mapDispatch)(App);
