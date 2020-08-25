@@ -1,10 +1,8 @@
 import { connect } from "react-redux";
 import Game from "../components/Game";
 
-import { getChapter } from "../store/action";
-
 const mapState = (state) => ({
-  game: state.game.chapterId,
+  game: state.game,
 });
 
 const mapDispatch = null;

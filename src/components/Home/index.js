@@ -8,7 +8,7 @@ import Log from '../../containers/Log';
 import PropTypes from "prop-types";
 
 
-const Home = ({ connected }) => {
+const Home = ({ connected, onClickPlay }) => {
   return (
     <div className="home">
       <span className="title-game">
@@ -19,7 +19,9 @@ const Home = ({ connected }) => {
       <Link to={`/play`} >
         <button
           className="play"
-          type="button">
+          type="button" 
+          onClick={onClickPlay}
+          >
           Jouer
         </button>
       </Link> 
