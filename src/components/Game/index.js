@@ -64,11 +64,14 @@ function Selection({question}) {
   );
 }
 
-function ButtonNext() {
+function ButtonNext({onClickNext}) {
   return (
-    <div className="buttonNext">
-      <Icon circular inverted color='grey' name='play' size='big' /> 
-    </div>
+    <button 
+    className="buttonNext"
+    onClick={onClickNext}
+    >
+    <Icon circular inverted color='grey' name='play' size='big' /> 
+    </button>
   );
 }
 

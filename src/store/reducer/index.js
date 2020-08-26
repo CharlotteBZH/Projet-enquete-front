@@ -4,6 +4,7 @@ import {
   REGISTRATION_SUBMIT,
   REGISTRATION_INPUT_CHANGE,
   GET_CHAPTER,
+  GET_NEXT,
 } from "../action";
 
 const initialState = {
@@ -21,13 +22,17 @@ const initialState = {
   game: {
     tagName: "toto",
     narration: "Hello World",
-    question: "tu penses que... ?",
+    question: "tu penses que Bidule à tuer machin.. ?",
     chapterId: 1,
   },
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case GET_NEXT:
+      return {
+        ...state,
+      };
     case GET_CHAPTER:
       return {
         ...state,
