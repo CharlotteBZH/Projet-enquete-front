@@ -1,18 +1,6 @@
-// import { createStore, applyMiddleware } from "redux";
-// import rootReducer from "./reducer";
-// import nextMiddleware from './middlewares/nextMiddlewares';
+import { createStore } from "redux";
+import rootReducer from "./reducer";
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ;
+const store = createStore(rootReducer);
 
-// const enhancers = composeEnhancers(
-//     applyMiddleware(
-//         nextMiddleware
-//     )
-// );
-
-// const store = createStore(
-//     rootReducer,
-//     enhancers
-// );
-
-// export default store;
+export default store;

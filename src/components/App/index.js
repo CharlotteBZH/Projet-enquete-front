@@ -21,6 +21,7 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Home />
+            
           </Route>
 
           <Route exact path="/logon">

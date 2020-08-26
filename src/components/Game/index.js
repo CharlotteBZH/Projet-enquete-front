@@ -1,59 +1,60 @@
-import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
-import { Icon } from 'semantic-ui-react';
-import './style.scss';
-import './headBand.scss';
-import './buttonNext.scss';
-import './text.scss';
-import './selection.scss';
-import './tag.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Icon } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+import "./style.scss";
+import "./headBand.scss";
+import "./buttonNext.scss";
+import "./text.scss";
+import "./selection.scss";
+import "./tag.scss";
 import PropTypes from "prop-types";
 
-
+import Menu from '../Menu';
 //import Connexion from '../../containers/Connexion';
-//import Menu from '../Menu';
 
-function Game({game}) {
+const Game = ({ game }) => {
   return (
     <div className="game">
-      <h1>Composant Game</h1>
-      <Tag {...game}/>
+      <Menu />
+      <Tag {...game} />
       <Headband {...game} />
     </div>
   );
-}
+};
 
 export default Game;
 
-
-function Tag({tagName}) {
+const Tag = ({ tagName }) => {
   return (
     <div className="tag">
       <h2>{tagName}</h2>
-      <Icon name='user' className='userLogo' />
+      <Icon name="user" className="userLogo" />
     </div>
   );
-}
+};
 
-function Headband({narration}) {
+const Headband = ({ narration, onClickNext }) => {
   return (
     <div className="headband">
-      <Text narration={narration}/>
-      <Selection />
-      <ButtonNext />
+      <Text narration={narration} />
+      <Selection
+      // question={question}
+      />
+      <ButtonNext onClick={onClickNext} />
     </div>
   );
-}
+};
 
-function Text({narration}) {
+const Text = ({ narration }) => {
   return (
     <div className="text">
       <p>{narration}</p>
     </div>
   );
-}
+};
 
-function Selection({question}) {
+const Selection = ({ question }) => {
   return (
     <div className="selection">
       <p className="selection_para">{question}</p>
@@ -62,30 +63,26 @@ function Selection({question}) {
       <p className="selection_para">{question}</p>
     </div>
   );
-}
+};
 
-function ButtonNext({onClickNext}) {
+const ButtonNext = ({ onClickNext }) => {
   return (
-    <button 
-    className="buttonNext"
-    onClick={onClickNext}
-    >
-    <Icon circular inverted color='grey' name='play' size='big' /> 
-    </button>
+    <Link to={`/play`}>
+      <div className="buttonNext" type="button" onClick={onClickNext}>
+        <Icon circular inverted color="grey" name="play" size="big" />
+      </div>
+    </Link>
   );
-}
+};
 
 Tag.propTypes = {
-  tagName: PropTypes.string.isRequired
+  tagName: PropTypes.string.isRequired,
 };
-
 
 Text.propTypes = {
-  narration: PropTypes.string.isRequired
+  narration: PropTypes.string.isRequired,
 };
-
 
 Selection.propTypes = {
-  question: PropTypes.string.isRequired
+  question: PropTypes.string.isRequired,
 };
-

@@ -2,6 +2,7 @@ import React from 'react';
 import './style.scss';
 
 import PropTypes from "prop-types";
+import Menu from "../Menu";
 
 const Registration = ({
   // data qui vient du state
@@ -28,6 +29,7 @@ const Registration = ({
   };
   return (
     <div className="registration">
+      <Menu />
       <h1>Formulaire d'inscription</h1>
 
       <form 
