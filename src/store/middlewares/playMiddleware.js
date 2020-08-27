@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { GET_CHAPTER } from '../action';
-const chapterId = store.getState().game.chapterId;
+import { GET_CHAPTER, getChapterSucces, getChapterError } from '../action';
 
 const playMiddleware = (store) => (next) => (action) => {
+  const chapterId = store.getState().game.chapterId;
   next(action);
   switch (action.type) {
     case GET_CHAPTER:
