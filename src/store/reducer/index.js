@@ -11,40 +11,43 @@ import {
 } from "../action";
 
 const initialState = {
-  user: {
+  user: [{
     id: "",
     pseudo: "",
     mail: "",
     checkMail: "",
     pwd: "",
     checkPwd: "",
-  },
-  character: {
+  }],
+  character: [{
     id: "",
     name: "jules",
     picture: "",
     is_gulty: "",
     is_suspect: "",
     alibi: "",
-  },
-  place: {
+  }],
+  place: [{
     id: "",
     name: "",
     picture: "",
-  },
-  chapter: {
+  }],
+  chapter: [{
     id: "",
     name: "",
-  },
-  question: {
+    counter: 1
+  }],
+  question: [{
     id: "",
     description: "",
     answer: "",
-  },
-  stoytelling: {
+    counter: 1
+  }],
+  stoytelling: [{
     id: "",
     sentence: "",
-  },
+    counter: 1
+  }],
   isLogged: false,
   connected: false,
   loading: false,
@@ -55,6 +58,8 @@ const initialState = {
     narration: "Hello World",
     question: "tu penses que Bidule à tuer machin.. ?",
     chapterId: 1,
+    storytellingId: 1,
+    questionId: 1
   },
 };
 
@@ -73,15 +78,16 @@ export default (state = initialState, action = {}) => {
     case GET_CHAPTER_ERROR:
       return {
         ...state,
-         //situation: action.payload,
+        //situation: action.payload,
       };
     case GET_NEXT:
       return {
         ...state,
+        counter: state.chapter.counter++
       };
     case GET_CHAPTER:
       return {
-        ...state,
+        ...state
       };
     case LOGIN_SUBMIT:
       return {

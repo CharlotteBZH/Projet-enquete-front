@@ -4,6 +4,7 @@ import { getNext } from '../store/action';
 
 const mapState = (state) => ({
   game: state.game,
+  chapter: state.chapter
 });
 
 const mapDispatch = (dispatch) => ({
