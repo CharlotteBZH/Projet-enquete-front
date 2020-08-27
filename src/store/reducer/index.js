@@ -11,55 +11,67 @@ import {
 } from "../action";
 
 const initialState = {
-  user: [{
-    id: "",
-    pseudo: "",
-    mail: "",
-    checkMail: "",
-    pwd: "",
-    checkPwd: "",
-  }],
-  character: [{
-    id: "",
-    name: "jules",
-    picture: "",
-    is_gulty: "",
-    is_suspect: "",
-    alibi: "",
-  }],
-  place: [{
+  user: [
+    {
+      id: "",
+      pseudo: "",
+      mail: "",
+      checkMail: "",
+      pwd: "",
+      checkPwd: "",
+    },
+  ],
+  character: [
+    {
+      id: "",
+      name: "jules",
+      picture: "",
+      is_gulty: "",
+      is_suspect: "",
+      alibi: "",
+    },
+  ],
+  place: [
+    {
+      id: "",
+      name: "",
+      picture: "",
+    },
+  ],
+  chapter: {
     id: "",
     name: "",
-    picture: "",
-  }],
-  chapter: [{
-    id: "",
-    name: "",
-    counter: 1
-  }],
-  question: [{
-    id: "",
-    description: "",
-    answer: "",
-    counter: 1
-  }],
-  stoytelling: [{
-    id: "",
-    sentence: "",
-    counter: 1
-  }],
+  },
+  question: [
+    {
+      id: "",
+      description: "",
+      answer: "",
+    },
+  ],
+  storytelling: [
+    {
+      id: "",
+      sentence: "",
+    },
+  ],
   isLogged: false,
   connected: false,
   loading: false,
   open: false,
   //logged: false,
+  counter: {
+    chapterCounter: 1,
+    storyCounter: 1,
+    questionCounter: 1,
+  },
   game: {
     tagName: "toto",
     narration: "Hello World",
     question: "tu penses que Bidule à tuer machin.. ?",
     chapterId: 1,
     storytellingId: 1,
-    questionId: 1
+    questionId: 1,
   },
 };
 
@@ -83,11 +95,11 @@ export default (state = initialState, action = {}) => {
     case GET_NEXT:
       return {
         ...state,
-        counter: state.chapter.counter++
+        // counter: state.counter
       };
     case GET_CHAPTER:
       return {
-        ...state
+        ...state,
       };
     case LOGIN_SUBMIT:
       return {
@@ -119,4 +131,11 @@ export default (state = initialState, action = {}) => {
     default:
       return state;
   }
+};
+
+export const compareStoryCounterWithStoryLength = () => {
+  if (state.counter.storyCounter <= state.storytelling.length) {
+     state.counter.storytelling++;
+  }
+  return "";
 };
