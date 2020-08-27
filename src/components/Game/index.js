@@ -13,12 +13,12 @@ import PropTypes from "prop-types";
 import Menu from '../Menu';
 //import Connexion from '../../containers/Connexion';
 
-const Game = ({ game, chapter }) => {
+const Game = ({ game, chapter}) => {
   return (
     <div className="game">
       <Menu />
       <Tag {...game} />
-      <Headband {...game, chapter} />
+      <Headband {...game}/>
     </div>
   );
 };

@@ -5,8 +5,15 @@ import { compareStoryCounterWithStoryLength } from '../store/reducer/index';
 
 const mapState = (state) => ({
   game: state.game,
-  chapter: state.chapter
+  place: state.place.name,
+  //infostory: compareStoryCounterWithStoryLength
 });
+
+
+/*const mapState = (state) => ({
+  list: state.recipes.list,
+  title: getTitleByRecipeNumber(state.recipes.list.length)
+});*/
 
 const mapDispatch = (dispatch) => ({
   onClickNext: () => {

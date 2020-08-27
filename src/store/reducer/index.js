@@ -31,17 +31,8 @@ const initialState = {
       alibi: "",
     },
   ],
-  place: [
-    {
-      id: "",
-      name: "",
-      picture: "",
-    },
-  ],
-  chapter: {
-    id: "",
-    name: "",
-  },
+  place: [],
+  chapter: {},
   question: [
     {
       id: "",
@@ -85,12 +76,12 @@ export default (state = initialState, action = {}) => {
     case GET_CHAPTER_SUCCES:
       return {
         ...state,
-        //situation: action.payload,
+        place: action.payload,
       };
     case GET_CHAPTER_ERROR:
       return {
         ...state,
-        //situation: action.payload,
+        place: action.payload,
       };
     case GET_NEXT:
       return {
@@ -133,9 +124,24 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-export const compareStoryCounterWithStoryLength = () => {
+/*export const compareStoryCounterWithStoryLength = () => {
   if (state.counter.storyCounter <= state.storytelling.length) {
-     state.counter.storytelling++;
+     console.log(state.counter.storyCounter);
+     console.log(state.storytelling.length);
   }
-  return "";
+  return ;
 };
+*/
+/*export const getTitleByRecipeNumber = (number = 0) => {
+  if (number === 0) {
+    return 'Recettes à venir, revenez bientôt';
+  }
+  if (number === 1) {
+    return 'Découvrez notre recette du moment';
+  }
+  if (number > 1) {
+    return 'Faites vous plaisr avec nos recettes';
+  }
+  return '';
+};*/
+
