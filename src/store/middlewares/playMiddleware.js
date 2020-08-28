@@ -15,6 +15,7 @@ const playMiddleware = (store) => (next) => (action) => {
           console.log(res.data);
           store.dispatch(getChapterSucces(res.data));
 
+
           axios({
             method: 'get',
             url: `http://localhost:3001/play/storytelling/${chapterId}`
@@ -25,13 +26,15 @@ const playMiddleware = (store) => (next) => (action) => {
             })
             .catch((err) => {
               console.log(err);
-              store.dispatch(getChapterError('Impossible de récupérer le storytelling...'))
+              store.dispatch(getChapterError('Impossible de récupérer les chapitres...'))
             })
+
+
 
         })
         .catch((err) => {
           console.log(err);
-          store.dispatch(getChapterError('Impossible de récupérer le chapitre...'))
+          store.dispatch(getChapterError('Impossible de récupérer les chapitres...'))
         })
 
 

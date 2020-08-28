@@ -78,21 +78,22 @@ export default (state = initialState, action = {}) => {
         ...state,
         place: [
           {
-            placeId: action.payload.place.id,
-            placeName: action.payload.place.name,
-            placePicture: action.payload.place.picture
+            placeId: action.payload["place.id"],
+            placeName: action.payload["place.name"],
+            placePicture: action.payload["place.picture"]
           }
         ],
         chapter: [
           {
-            chapterId: action.payload.chapter.id
+            chapterId: action.payload["chapter.id"]
           }
         ],
-        // storytelling: [
-        //   {
-        //     // code ici
-        //   }
-        // ]
+        storytelling: [
+          {
+            storytellingId: action.payload.id,
+            sentence: action.payload.sentence
+          }
+        ]
       };
     case GET_CHAPTER_ERROR:
       return {
