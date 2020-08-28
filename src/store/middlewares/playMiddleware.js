@@ -6,6 +6,7 @@ const playMiddleware = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case GET_CHAPTER:
+
       axios({
         method: 'get',
         url: `http://localhost:3001/play/situation/${chapterId}`
@@ -13,11 +14,39 @@ const playMiddleware = (store) => (next) => (action) => {
         .then((res) => {
           console.log(res.data);
           store.dispatch(getChapterSucces(res.data));
+
+          axios({
+            method: 'get',
+            url: `http://localhost:3001/play/storytelling/${chapterId}`
+          })
+            .then((res) => {
+              console.log(res.data);
+              store.dispatch(getChapterSucces(res.data));
+            })
+            .catch((err) => {
+              console.log(err);
+              store.dispatch(getChapterError('Impossible de récupérer le storytelling...'))
+            })
+
         })
         .catch((err) => {
           console.log(err);
-          store.dispatch(getChapterError('Impossible de récupérer les chapitres...'))
+          store.dispatch(getChapterError('Impossible de récupérer le chapitre...'))
         })
+
+
+      // axios({
+      //   method: 'get',
+      //   url: `http://localhost:3001/play/situation/${chapterId}`
+      // })
+      //   .then((res) => {
+      //     console.log(res.data);
+      //     store.dispatch(getChapterSucces(res.data));
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     store.dispatch(getChapterError('Impossible de récupérer les chapitres...'))
+      //   })
       break;
     default:
       return;
