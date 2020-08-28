@@ -11,33 +11,40 @@ import "./tag.scss";
 import PropTypes from "prop-types";
 
 import Menu from '../Menu';
-//import Connexion from '../../containers/Connexion';
+import Log from '../../containers/Log';
 
-const Game = ({ game, chapter}) => {
+const Game = ({ place, storytelling }) => {
+  console.log(storytelling);
+  // il faudra faire une variable compteur qui viendra remplacer 
+  // le [0] dans le headband 
   return (
     <div className="game">
       <Menu />
-      <Tag {...game} />
-      <Headband {...game}/>
+      <Log />
+      <Tag place={place.name} />
+      <Headband storytelling={storytelling[0]} />
     </div>
   );
 };
 
 export default Game;
 
-const Tag = ({ tagName }) => {
+
+
+const Tag = ({ place }) => {
   return (
     <div className="tag">
-      <h2>{tagName}</h2>
-      <Icon name="user" className="userLogo" />
+      <h2>{place}</h2>
     </div>
   );
 };
 
-const Headband = ({ narration, onClickNext }) => {
+const Headband = ({ storytelling, onClickNext }) => {
+  console.log("in headband", storytelling);
+
   return (
     <div className="headband">
-      <Text narration={narration} />
+      <Text sentence={storytelling.sentence} />
       <Selection
       // question={question}
       />
@@ -46,10 +53,10 @@ const Headband = ({ narration, onClickNext }) => {
   );
 };
 
-const Text = ({ narration }) => {
+const Text = ({ sentence }) => {
   return (
     <div className="text">
-      <p>{narration}</p>
+      <p>{sentence}</p>
     </div>
   );
 };

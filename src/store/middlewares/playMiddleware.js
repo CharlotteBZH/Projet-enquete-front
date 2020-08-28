@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CHAPTER, getChapterSucces, getChapterError } from '../action';
+import { GET_CHAPTER, getChapterSucces, getChapterError, getStorytellingSucces } from '../action';
 
 const playMiddleware = (store) => (next) => (action) => {
   const chapterId = store.getState().game.chapterId;
@@ -22,7 +22,7 @@ const playMiddleware = (store) => (next) => (action) => {
           })
             .then((res) => {
               console.log(res.data);
-              store.dispatch(getChapterSucces(res.data));
+              store.dispatch(getStorytellingSucces(res.data));
             })
             .catch((err) => {
               console.log(err);

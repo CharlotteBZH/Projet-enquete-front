@@ -4,16 +4,13 @@ import { getNext } from '../store/action';
 //import { compareStoryCounterWithStoryLength } from '../store/reducer/index';
 
 const mapState = (state) => ({
-  game: state.game,
-  place: state.place.name,
+  place: state.place,
+  storytelling: state.storytelling,
+  //chapter: state.chapter,
   //infostory: compareStoryCounterWithStoryLength
 });
 
 
-/*const mapState = (state) => ({
-  list: state.recipes.list,
-  title: getTitleByRecipeNumber(state.recipes.list.length)
-});*/
 
 const mapDispatch = (dispatch) => ({
   onClickNext: () => {
@@ -22,5 +19,3 @@ const mapDispatch = (dispatch) => ({
 });
 
 export default connect(mapState, mapDispatch)(Game);
-
-

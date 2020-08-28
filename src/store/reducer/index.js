@@ -6,6 +6,7 @@ import {
   GET_CHAPTER,
   GET_NEXT,
   GET_CHAPTER_SUCCES,
+  GET_STORYTELLING_SUCCES,
   GET_CHAPTER_ERROR,
   OPEN_MENU,
 } from "../action";
@@ -74,26 +75,29 @@ export default (state = initialState, action = {}) => {
         open: !state.open,
       };
     case GET_CHAPTER_SUCCES:
+      console.log("reducer:", action.payload[0]);
+      const payload = action.payload[0];
       return {
         ...state,
         place: [
           {
-            placeId: action.payload["place.id"],
-            placeName: action.payload["place.name"],
-            placePicture: action.payload["place.picture"]
+            placeId: payload["place.id"],
+            placeName: payload["place.name"],
+            placePicture: payload["place.picture"]
           }
         ],
         chapter: [
           {
-            chapterId: action.payload["chapter.id"]
-          }
-        ],
-        storytelling: [
-          {
-            storytellingId: action.payload.id,
-            sentence: action.payload.sentence
+            chapterId: payload["chapter.id"]
           }
         ]
+      };
+    case GET_STORYTELLING_SUCCES:
+      console.log("reducer:", action.payload);
+
+      return {
+        ...state,
+        storytelling: action.payload
       };
     case GET_CHAPTER_ERROR:
       return {
