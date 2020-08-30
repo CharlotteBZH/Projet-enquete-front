@@ -1,19 +1,20 @@
 import { connect } from "react-redux";
 import Game from "../components/Game";
 import { getNext } from '../store/action';
-//import { compareStoryCounterWithStoryLength } from '../store/reducer/index';
+
 
 const mapState = (state) => ({
   place: state.place,
   storytelling: state.storytelling,
-  //chapter: state.chapter,
-  //infostory: compareStoryCounterWithStoryLength
+  question: state.question,
+  character: state.character,
 });
 
 
 
 const mapDispatch = (dispatch) => ({
   onClickNext: () => {
+    console.log("toto")
     dispatch(getNext());
   },
 });

@@ -13,16 +13,17 @@ import PropTypes from "prop-types";
 import Menu from '../Menu';
 import Log from '../../containers/Log';
 
-const Game = ({ place, storytelling }) => {
+const Game = ({ place, storytelling, onClickNext, question, character }) => {
   console.log(storytelling);
   // il faudra faire une variable compteur qui viendra remplacer 
   // le [0] dans le headband 
   return (
     <div className="game">
+      <button onClick={onClickNext}> click ici</button>
       <Menu />
       <Log />
       <Tag place={place.name} />
-      <Headband storytelling={storytelling[0]} />
+      <Headband storytelling={storytelling[0]} next={onClickNext} />
     </div>
   );
 };
@@ -39,7 +40,7 @@ const Tag = ({ place }) => {
   );
 };
 
-const Headband = ({ storytelling, onClickNext }) => {
+const Headband = ({ storytelling, next}) => {
   console.log("in headband", storytelling);
 
   return (
@@ -48,7 +49,7 @@ const Headband = ({ storytelling, onClickNext }) => {
       <Selection
       // question={question}
       />
-      <ButtonNext onClick={onClickNext} />
+      <ButtonNext onClick={next} />
     </div>
   );
 };
@@ -75,9 +76,9 @@ const Selection = ({ question }) => {
 const ButtonNext = ({ onClickNext }) => {
   return (
     <Link to={`/play`}>
-      <div className="buttonNext" type="button" onClick={onClickNext}>
+      <button className="buttonNext" type="button" onClick={onClickNext}>
         <Icon circular inverted color="grey" name="play" size="big" />
-      </div>
+      </button>
     </Link>
   );
 };

@@ -4,11 +4,14 @@ import {
   REGISTRATION_SUBMIT,
   REGISTRATION_INPUT_CHANGE,
   GET_CHAPTER,
-  GET_NEXT,
-  GET_CHAPTER_SUCCES,
-  GET_STORYTELLING_SUCCES,
+  GET_CHAPTER_SUCCESS,
   GET_CHAPTER_ERROR,
+  GET_NEXT,
+  GET_STORYTELLING_SUCCESS,
+  GET_STORYTELLING_ERROR,
   OPEN_MENU,
+  GET_QUESTION_SUCCESS,
+  GET_QUESTION_ERROR
 } from "../action";
 
 const initialState = {
@@ -56,15 +59,15 @@ const initialState = {
     chapterCounter: 1,
     storyCounter: 1,
     questionCounter: 1,
+    situationCounter: 1,
+    //characterCounter : 1, Pour quand il y aura un charactere
   },
-  game: {
-    tagName: "toto",
-    narration: "Hello World",
-    question: "tu penses que Bidule à tuer machin.. ?",
+  /*game: {
     chapterId: 1,
     storytellingId: 1,
     questionId: 1,
-  },
+    situationId: 1,
+  },*/
 };
 
 export default (state = initialState, action = {}) => {
@@ -74,7 +77,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         open: !state.open,
       };
-    case GET_CHAPTER_SUCCES:
+
+    case GET_CHAPTER:
+    return {
+      ...state,
+    };
+    case GET_CHAPTER_SUCCESS:
       console.log("reducer:", action.payload[0]);
       const payload = action.payload[0];
       return {
@@ -92,27 +100,41 @@ export default (state = initialState, action = {}) => {
           }
         ]
       };
-    case GET_STORYTELLING_SUCCES:
-      console.log("reducer:", action.payload);
 
+      case GET_CHAPTER_ERROR:
+        return {
+          ...state,
+        };
+
+    case GET_STORYTELLING_SUCCESS:
       return {
         ...state,
         storytelling: action.payload
       };
-    case GET_CHAPTER_ERROR:
-      return {
-        ...state,
-        place: action.payload,
-      };
+   
+      case GET_STORYTELLING_ERROR:
+        return {
+          ...state,
+        };
+
     case GET_NEXT:
       return {
         ...state,
-        // counter: state.counter
+         counter:
+        setCompter(state)
+        
       };
-    case GET_CHAPTER:
+
+    case GET_QUESTION_SUCCESS:
+      return {
+        ...state,
+        question: action.payload
+      };
+    case GET_QUESTION_ERROR:
       return {
         ...state,
       };
+    
     case LOGIN_SUBMIT:
       return {
         ...state,
@@ -126,6 +148,7 @@ export default (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
+
     case REGISTRATION_SUBMIT:
       return {
         ...state,
@@ -145,24 +168,39 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-/*export const compareStoryCounterWithStoryLength = () => {
+let setCompter = (state) => {
+  //console.log("coucou");
+  console.log("chapitreC : ", state.counter.chapterCounter);
+  console.log("chapterC : ", state.counter.chapterCounter);
+  console.log("storyC : " ,state.counter.storyCounter);
+  console.log("questionC : ", state.counter.questionCounter);
+  console.log("characterCounter : ", state.counter.characterCounter);
   if (state.counter.storyCounter <= state.storytelling.length) {
-     console.log(state.counter.storyCounter);
-     console.log(state.storytelling.length);
+    //console.log("1");
+    state.counter.chapterCounter= state.counter.chapterCounter;
+    state.counter.questionCounter= state.counter.questionCounter;
+    state.counter.storyCounter++;
+    state.counter.situationCounter = state.counter.situationCounter;
+  }else if (state.counter.questionCounter <= state.question.length) {
+    //console.log("2");
+    state.counter.chapterCounter=state.counter.chapterCounter;
+    state.counter.questionCounter++;
+    state.counter.storyCounter=state.counter.storyCounter;
+    state.counter.situationCounter = state.counter.situationCounter;
+  }else{
+    //console.log("3");
+    state.counter.chapterCounter++;
+    state.counter.situationCounter++;
+    let i;
+    let j;
+    for (i=state.question.length; i>=1; i--){ // moche
+      state.counter.questionCounter--;
+    }
+    for (j=state.storytelling.length; j>=1; j--){ // moche
+      state.counter.storyCounter--;
+    }
   }
-  return ;
+  //console.log("fin");
+  return state.counter;
 };
-*/
-/*export const getTitleByRecipeNumber = (number = 0) => {
-  if (number === 0) {
-    return 'Recettes à venir, revenez bientôt';
-  }
-  if (number === 1) {
-    return 'Découvrez notre recette du moment';
-  }
-  if (number > 1) {
-    return 'Faites vous plaisr avec nos recettes';
-  }
-  return '';
-};*/
 

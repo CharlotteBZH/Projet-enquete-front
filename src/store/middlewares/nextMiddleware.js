@@ -1,21 +1,47 @@
 import axios from 'axios';
-import { GET_NEXT, getChapterSucces, getChapterError} from '../action';
+import { GET_NEXT, getChapterSuccess, getChapterError, getStorytellingSuccess, getStorytellingError, getQuestionSuccess, getQuestionError } from '../action';
 
 const nextMiddleware = (store) => (next) => (action) => {
-  const chapterId = store.getState().game.chapterId;
+
+  const chapterId = store.getState().counter.chapterCounter;
+  const situationId = store.getState().counter.situationCounter;
+
   next(action);
   switch (action.type) {
     case GET_NEXT:
       axios({
         method: 'get',
-        url: `http://localhost:3001/play/narration/${chapterId}`
+        url: `http://localhost:3001/play/situation/${chapterId}`
       })
         .then((res) => {
-          console.log(res.data);
-          store.dispatch(getChapterSucces(res.data));
+          store.dispatch(getChapterSuccess(res.data));
+
+
+          axios({
+            method: 'get',
+            url: `http://localhost:3001/play/storytelling/${chapterId}`
+          })
+            .then((res) => {
+              store.dispatch(getStorytellingSuccess(res.data));
+            
+              axios({
+                method: 'get',
+                url: `http://localhost:3001/play/question/${situationId}`
+              })
+                .then((res) => {
+                  store.dispatch(getQuestionSuccess(res.data));
+                })
+                .catch((err) => {
+                  store.dispatch(getQuestionError('Impossible de récupérer les questions...'))
+                })
+            
+            })
+            .catch((err) => {
+              store.dispatch(getStorytellingError('Impossible de récupérer les story...'))
+            })
+
         })
         .catch((err) => {
-          console.log(err);
           store.dispatch(getChapterError('Impossible de récupérer les chapitres...'))
         })
       break;
