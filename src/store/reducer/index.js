@@ -38,11 +38,11 @@ const initialState = {
   place: [],
   chapter: {},
   question: [
-    {
+   /* {
       id: "",
       description: "",
       answer: "",
-    },
+    },*/
   ],
   storytelling: [
     {
@@ -54,20 +54,14 @@ const initialState = {
   connected: false,
   loading: false,
   open: false,
-  //logged: false,
   counter: {
     chapterCounter: 1,
     storyCounter: 1,
     questionCounter: 1,
     situationCounter: 1,
+    passed : true,
     //characterCounter : 1, Pour quand il y aura un charactere
   },
-  /*game: {
-    chapterId: 1,
-    storytellingId: 1,
-    questionId: 1,
-    situationId: 1,
-  },*/
 };
 
 export default (state = initialState, action = {}) => {
@@ -83,7 +77,7 @@ export default (state = initialState, action = {}) => {
       ...state,
     };
     case GET_CHAPTER_SUCCESS:
-      console.log("reducer:", action.payload[0]);
+      //console.log("reducer:", action.payload[0]);
       const payload = action.payload[0];
       return {
         ...state,
@@ -169,38 +163,36 @@ export default (state = initialState, action = {}) => {
 };
 
 let setCompter = (state) => {
-  //console.log("coucou");
-  console.log("chapitreC : ", state.counter.chapterCounter);
-  console.log("chapterC : ", state.counter.chapterCounter);
-  console.log("storyC : " ,state.counter.storyCounter);
-  console.log("questionC : ", state.counter.questionCounter);
-  console.log("characterCounter : ", state.counter.characterCounter);
+  console.log("question : ", state.question);
+
   if (state.counter.storyCounter <= state.storytelling.length) {
-    //console.log("1");
+    //console.log("story")
     state.counter.chapterCounter= state.counter.chapterCounter;
     state.counter.questionCounter= state.counter.questionCounter;
     state.counter.storyCounter++;
     state.counter.situationCounter = state.counter.situationCounter;
-  }else if (state.counter.questionCounter <= state.question.length) {
-    //console.log("2");
+    state.counter.passed = false;
+  }
+  else if (state.counter.questionCounter <= state.question.length) {
+    //console.log("tutu")
     state.counter.chapterCounter=state.counter.chapterCounter;
     state.counter.questionCounter++;
     state.counter.storyCounter=state.counter.storyCounter;
     state.counter.situationCounter = state.counter.situationCounter;
-  }else{
-    //console.log("3");
+    state.counter.passed = true;
+  }
+  else{
+    //console.log("autre")
     state.counter.chapterCounter++;
     state.counter.situationCounter++;
-    let i;
-    let j;
-    for (i=state.question.length; i>=1; i--){ // moche
-      state.counter.questionCounter--;
-    }
-    for (j=state.storytelling.length; j>=1; j--){ // moche
-      state.counter.storyCounter--;
-    }
+    state.counter.questionCounter = 1;
+    state.counter.storyCounter= 1 ;
+    state.counter.passed = false;
   }
-  //console.log("fin");
+  //console.log("passedSortie : ", state.counter.passed);
+  console.log("chapterSortie : ", state.counter.chapterCounter);
+  console.log("storySortie : " ,state.counter.storyCounter);
+  console.log("QuestionSortie : ", state.counter.questionCounter);
   return state.counter;
 };
 

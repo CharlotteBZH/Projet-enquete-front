@@ -4,17 +4,18 @@ import { getNext } from '../store/action';
 
 
 const mapState = (state) => ({
-  place: state.place,
+  place: state.place.placeName,
   storytelling: state.storytelling,
   question: state.question,
   character: state.character,
+  storyCounter:state.counter.storyCounter,
+  questionCounter: state.counter.questionCounter,
 });
 
 
 
 const mapDispatch = (dispatch) => ({
   onClickNext: () => {
-    console.log("toto")
     dispatch(getNext());
   },
 });
