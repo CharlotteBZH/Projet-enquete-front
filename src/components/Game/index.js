@@ -21,7 +21,6 @@ const Game = ({ place, storytelling, onClickNext, question, questionCounter, sto
 
   return (
     <div className="game">
-      <button name="suivant" > clique ici</button>
       <Menu menu={onOpenMenu} open={open}/>
       <Log />
       <Tag place={place} />
@@ -55,14 +54,14 @@ const Headband = ({ storytelling, next, question, storyCounter, questionCounter}
       (storyCounter ==1) ?
         <div className="headband">
           {<Text sentence={storytelling.sentence} />}
-          <button onClick={next} > suite </button>
+          <ButtonNext next={next}/>
         </div>
       :
         (typeof question !== 'undefined') ?
         <div className="headband">
           <Selection question={question.description} />}
           <Selection question={question.answer} />}
-          <button name="suivant" onClick={next} > suite </button>
+          <ButtonNext next={next}/>
         </div>
         :
         /*Là il faudrait "simuler" un clic sur NEXT pour sauter les chapitres/situations sans questions
@@ -71,7 +70,7 @@ const Headband = ({ storytelling, next, question, storyCounter, questionCounter}
         */
         <div className="headband">
           <Selection question="Pas de question" />
-          <button name="suivant" onClick={next} > suite2 </button>
+          <ButtonNext next={next}/>
         </div>
   );
 };
@@ -92,10 +91,10 @@ const Selection = ({ question }) => {
   );
 };
 
-const ButtonNext = ({ onClickNext }) => {
+const ButtonNext = ({ next}) => {
   return (
     <Link to={`/play`}>
-      <button className="buttonNext" type="button" onClick={onClickNext}>
+      <button className="buttonNext" type="button" onClick={next}>
         <Icon circular inverted color="grey" name="play" size="big" />
       </button>
     </Link>
