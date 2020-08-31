@@ -1,30 +1,28 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import './style.scss';
+import "./style.scss";
 
+import Menu from "../Menu";
 //import Alias from '../../containers/Alias';
-import Log from '../../containers/Log';
+import Log from "../../containers/Log";
 
 import PropTypes from "prop-types";
 
-
-const Home = ({ connected }) => {
+const Home = ({ connected, onClickPlay, onOpenMenu, open }) => {
   return (
     <div className="home">
+      <div className="menuButton">
+        <Menu menu={onOpenMenu} open={open} />
+      </div>
       <span className="title-game">
         <h1>Enquête CLUED'O</h1>
       </span>
 
-   
-      <Link to={`/play`} >
-        <button
-          className="play"
-          type="button">
+      <Link to={`/play`}>
+        <button className="play" type="button" onClick={onClickPlay}>
           Jouer
         </button>
-      </Link> 
-     
-      
+      </Link>
 
       <div className="tolog">
         <Log />
@@ -34,12 +32,10 @@ const Home = ({ connected }) => {
 };
 
 Home.propTypes = {
-  connected: PropTypes.bool.isRequired
+  connected: PropTypes.bool.isRequired,
 };
 
-
 export default Home;
-
 
 /*{connected && 
   <Link to={`/play`} >
@@ -59,6 +55,5 @@ export default Home;
   </button>
   }*/
 
-
-  /*{connected ? <Alias /> : <Log />}
+/*{connected ? <Alias /> : <Log />}
         {console.log(connected)}*/

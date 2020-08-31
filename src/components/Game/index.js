@@ -1,88 +1,130 @@
-import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
-import { Icon } from 'semantic-ui-react';
-import './style.scss';
-import './headBand.scss';
-import './buttonNext.scss';
-import './text.scss';
-import './selection.scss';
-import './tag.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Icon } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+import "./style.scss";
+import "./headBand.scss";
+import "./buttonNext.scss";
+import "./text.scss";
+import "./selection.scss";
+import "./tag.scss";
 import PropTypes from "prop-types";
 
+import Menu from "../Menu";
+import Log from "../../containers/Log";
 
-//import Connexion from '../../containers/Connexion';
-//import Menu from '../Menu';
+const Game = ({
+  place,
+  storytelling,
+  onClickNext,
+  question,
+  questionCounter,
+  storyCounter,
+  open,
+  onOpenMenu,
+}) => {
+  // il faudra faire une variable compteur qui viendra remplacer
+  // le [0] dans le headband
+  //console.log("questionAffichage : ", questionCounter);
+  console.log(
+    "------------------------------------------------------------------------"
+  );
 
-function Game({game}) {
   return (
     <div className="game">
-      <h1>Composant Game</h1>
-      <Tag {...game}/>
-      <Headband {...game} />
+      <img className="picturesBack" src={place.placePicture} />
+      <Menu menu={onOpenMenu} open={open} />
+      <Log />
+      <Tag place={place} />
+      <Headband
+        storytelling={storytelling[0]}
+        next={onClickNext}
+        question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
+        questionCounter={questionCounter}
+        storyCounter={storyCounter}
+      />
     </div>
   );
-}
+};
 
 export default Game;
 
-
-function Tag({tagName}) {
+const Tag = ({ place }) => {
+  console.log("place :", place);
   return (
     <div className="tag">
-      <h2>{tagName}</h2>
-      <Icon name='user' className='userLogo' />
+      <h2>{place.placeName}</h2>
     </div>
   );
-}
+};
 
-function Headband({narration}) {
-  return (
+const Headband = ({
+  storytelling,
+  next,
+  question,
+  storyCounter,
+  questionCounter,
+}) => {
+  //console.log("in headband", storytelling);
+  //console.log("questionCounter :",questionCounter);
+  //console.log("storyCounter : ",storyCounter)
+  return storyCounter == 1 ? (
     <div className="headband">
-      <Text narration={narration}/>
-      <Selection />
-      <ButtonNext />
+      {<Text sentence={storytelling.sentence} />}
+      <ButtonNext next={next} />
+    </div>
+  ) : typeof question !== "undefined" ? (
+    <div className="headband">
+      <Selection question={question.description} />}
+      <Selection question={question.answer} />}
+      <ButtonNext next={next} />
+    </div>
+  ) : (
+    /*Là il faudrait "simuler" un clic sur NEXT pour sauter les chapitres/situations sans questions
+        Peut être regarder du côté des REF => pas compris comment s'en servir
+        Et virer le div en dessous :)
+        */
+    <div className="headband">
+      <Selection question="Pas de question" />
+      <ButtonNext next={next} />
     </div>
   );
-}
+};
 
-function Text({narration}) {
+const Text = ({ sentence }) => {
   return (
     <div className="text">
-      <p>{narration}</p>
+      <p>{sentence}</p>
     </div>
   );
-}
+};
 
-function Selection({question}) {
+const Selection = ({ question }) => {
   return (
     <div className="selection">
       <p className="selection_para">{question}</p>
-      <p className="selection_para">{question}</p>
-      <p className="selection_para">{question}</p>
-      <p className="selection_para">{question}</p>
     </div>
   );
-}
+};
 
-function ButtonNext() {
+const ButtonNext = ({ next }) => {
   return (
-    <div className="buttonNext">
-      <Icon circular inverted color='grey' name='play' size='big' /> 
-    </div>
+    <Link to={`/play`}>
+      <button className="buttonNext" type="button" onClick={next}>
+        <Icon circular inverted color="grey" name="play" size="big" />
+      </button>
+    </Link>
   );
-}
+};
 
 Tag.propTypes = {
-  tagName: PropTypes.string.isRequired
+  tagName: PropTypes.string.isRequired,
 };
-
 
 Text.propTypes = {
-  narration: PropTypes.string.isRequired
+  narration: PropTypes.string.isRequired,
 };
-
 
 Selection.propTypes = {
-  question: PropTypes.string.isRequired
+  question: PropTypes.string.isRequired,
 };
-
