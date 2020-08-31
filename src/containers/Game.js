@@ -1,19 +1,16 @@
 import { connect } from "react-redux";
 import Game from "../components/Game";
-import { getNext, openMenu } from '../store/action';
-
+import { getNext, openMenu } from "../store/action";
 
 const mapState = (state) => ({
-  place: state.place.placeName,
+  place: state.place,
   storytelling: state.storytelling,
   question: state.question,
   character: state.character,
-  storyCounter:state.counter.storyCounter,
+  storyCounter: state.counter.storyCounter,
   questionCounter: state.counter.questionCounter,
   open: state.open,
 });
-
-
 
 const mapDispatch = (dispatch) => ({
   onClickNext: () => {
