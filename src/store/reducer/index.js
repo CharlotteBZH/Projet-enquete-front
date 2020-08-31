@@ -11,7 +11,7 @@ import {
   GET_STORYTELLING_ERROR,
   OPEN_MENU,
   GET_QUESTION_SUCCESS,
-  GET_QUESTION_ERROR
+  GET_QUESTION_ERROR,
 } from "../action";
 
 const initialState = {
@@ -35,10 +35,10 @@ const initialState = {
       alibi: "",
     },
   ],
-  place: [],
+  place: {},
   chapter: {},
   question: [
-   /* {
+    /* {
       id: "",
       description: "",
       answer: "",
@@ -59,7 +59,7 @@ const initialState = {
     storyCounter: 1,
     questionCounter: 1,
     situationCounter: 1,
-    passed : true,
+    passed: true,
     //characterCounter : 1, Pour quand il y aura un charactere
   },
 };
@@ -73,62 +73,58 @@ export default (state = initialState, action = {}) => {
       };
 
     case GET_CHAPTER:
-    return {
-      ...state,
-    };
+      return {
+        ...state,
+      };
     case GET_CHAPTER_SUCCESS:
       //console.log("reducer:", action.payload[0]);
       const payload = action.payload[0];
       return {
         ...state,
-        place: [
-          {
-            placeId: payload["place.id"],
-            placeName: payload["place.name"],
-            placePicture: payload["place.picture"]
-          }
-        ],
+        place: {
+          placeId: payload["place.id"],
+          placeName: payload["place.name"],
+          placePicture: payload["place.picture"],
+        },
         chapter: [
           {
-            chapterId: payload["chapter.id"]
-          }
-        ]
+            chapterId: payload["chapter.id"],
+          },
+        ],
       };
 
-      case GET_CHAPTER_ERROR:
-        return {
-          ...state,
-        };
+    case GET_CHAPTER_ERROR:
+      return {
+        ...state,
+      };
 
     case GET_STORYTELLING_SUCCESS:
       return {
         ...state,
-        storytelling: action.payload
+        storytelling: action.payload,
       };
-   
-      case GET_STORYTELLING_ERROR:
-        return {
-          ...state,
-        };
+
+    case GET_STORYTELLING_ERROR:
+      return {
+        ...state,
+      };
 
     case GET_NEXT:
       return {
         ...state,
-         counter:
-        setCompter(state)
-        
+        counter: setCompter(state),
       };
 
     case GET_QUESTION_SUCCESS:
       return {
         ...state,
-        question: action.payload
+        question: action.payload,
       };
     case GET_QUESTION_ERROR:
       return {
         ...state,
       };
-    
+
     case LOGIN_SUBMIT:
       return {
         ...state,
@@ -167,32 +163,29 @@ let setCompter = (state) => {
 
   if (state.counter.storyCounter <= state.storytelling.length) {
     //console.log("story")
-    state.counter.chapterCounter= state.counter.chapterCounter;
-    state.counter.questionCounter= state.counter.questionCounter;
+    state.counter.chapterCounter = state.counter.chapterCounter;
+    state.counter.questionCounter = state.counter.questionCounter;
     state.counter.storyCounter++;
     state.counter.situationCounter = state.counter.situationCounter;
     state.counter.passed = false;
-  }
-  else if (state.counter.questionCounter <= state.question.length) {
+  } else if (state.counter.questionCounter <= state.question.length) {
     //console.log("tutu")
-    state.counter.chapterCounter=state.counter.chapterCounter;
+    state.counter.chapterCounter = state.counter.chapterCounter;
     state.counter.questionCounter++;
-    state.counter.storyCounter=state.counter.storyCounter;
+    state.counter.storyCounter = state.counter.storyCounter;
     state.counter.situationCounter = state.counter.situationCounter;
     state.counter.passed = true;
-  }
-  else{
+  } else {
     //console.log("autre")
     state.counter.chapterCounter++;
     state.counter.situationCounter++;
     state.counter.questionCounter = 1;
-    state.counter.storyCounter= 1 ;
+    state.counter.storyCounter = 1;
     state.counter.passed = false;
   }
   //console.log("passedSortie : ", state.counter.passed);
   console.log("chapterSortie : ", state.counter.chapterCounter);
-  console.log("storySortie : " ,state.counter.storyCounter);
+  console.log("storySortie : ", state.counter.storyCounter);
   console.log("QuestionSortie : ", state.counter.questionCounter);
   return state.counter;
 };
-

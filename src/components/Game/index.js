@@ -38,6 +38,7 @@ const Game = ({ place, storytelling, onClickNext, question, questionCounter, sto
 export default Game;
 
 const Tag = ({ place }) => {
+  console.log("place :", place)
   return (
     <div className="tag">
       <h2>{place}</h2>
