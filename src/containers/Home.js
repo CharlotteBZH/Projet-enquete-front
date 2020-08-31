@@ -1,15 +1,17 @@
 import { connect } from "react-redux";
 import Home from "../components/Home";
-import { getChapter } from '../store/action';
+import { getChapter, openMenu } from "../store/action";
 
-const mapState = null;
-// (state) => ({
-//   connected: state.connected.connected,
-// });
+const mapState = (state) => ({
+  open: state.open,
+});
 
 const mapDispatch = (dispatch) => ({
   onClickPlay: () => {
     dispatch(getChapter());
+  },
+  onOpenMenu: () => {
+    dispatch(openMenu());
   },
 });
 

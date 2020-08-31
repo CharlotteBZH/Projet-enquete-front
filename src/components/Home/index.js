@@ -8,11 +8,11 @@ import Log from "../../containers/Log";
 
 import PropTypes from "prop-types";
 
-const Home = ({ connected, onClickPlay }) => {
+const Home = ({ connected, onClickPlay, onOpenMenu, open }) => {
   return (
     <div className="home">
       <div className="menuButton">
-        <Menu />
+        <Menu menu={onOpenMenu} open={open} />
       </div>
       <span className="title-game">
         <h1>Enquête CLUED'O</h1>

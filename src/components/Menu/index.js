@@ -6,13 +6,18 @@ import "./style.scss";
 
 //import Menu from "../../containers/Menu";
 
-const Menu = ({onOpenMenu, open}) => {
+const Menu = ({ open, menu }) => {
   return (
     <div>
-      <button className="menuButton" onClick={onOpenMenu}>
+      <div className="menuButton" onClick={menu}>
         Menu
-      </button>
-      {open && <div><button>Accueil</button> <button>Mute</button> <button>Notebook</button></div>}
+      </div>
+      {open && (
+        <div>
+          <button>Accueil</button> <button>Mute</button>
+          <button>Notebook</button>
+        </div>
+      )}
     </div>
   );
 };

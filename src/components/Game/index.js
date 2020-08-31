@@ -13,7 +13,7 @@ import PropTypes from "prop-types";
 import Menu from '../Menu';
 import Log from '../../containers/Log';
 
-const Game = ({ place, storytelling, onClickNext, question, questionCounter, storyCounter }) => {
+const Game = ({ place, storytelling, onClickNext, question, questionCounter, storyCounter, open, onOpenMenu }) => {
   // il faudra faire une variable compteur qui viendra remplacer 
   // le [0] dans le headband 
   //console.log("questionAffichage : ", questionCounter);
@@ -21,8 +21,8 @@ const Game = ({ place, storytelling, onClickNext, question, questionCounter, sto
 
   return (
     <div className="game">
-      <button name="suivant" onClick={onClickNext}> clique ici</button>
-      <Menu />
+      <button name="suivant" > clique ici</button>
+      <Menu menu={onOpenMenu} open={open}/>
       <Log />
       <Tag place={place} />
       <Headband 
