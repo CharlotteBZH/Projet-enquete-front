@@ -22,6 +22,8 @@ const Game = ({
   storyCounter,
   open,
   onOpenMenu,
+  toggleQuestionResponse,
+  hide,
 }) => {
   // il faudra faire une variable compteur qui viendra remplacer
   // le [0] dans le headband
@@ -42,6 +44,8 @@ const Game = ({
         question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
         questionCounter={questionCounter}
         storyCounter={storyCounter}
+        toggleQuestionResponse={toggleQuestionResponse}
+        hide={hide}
       />
     </div>
   );
@@ -64,6 +68,8 @@ const Headband = ({
   question,
   storyCounter,
   questionCounter,
+  toggleQuestionResponse,
+  hide,
 }) => {
   //console.log("in headband", storytelling);
   //console.log("questionCounter :",questionCounter);
@@ -75,8 +81,11 @@ const Headband = ({
     </div>
   ) : typeof question !== "undefined" ? (
     <div className="headband">
-      <Selection question={question.description} />}
-      <Selection question={question.answer} />}
+      <Selection
+        question={question}
+        toggleQuestionResponse={toggleQuestionResponse}
+        hide={hide}
+      />
       <ButtonNext next={next} />
     </div>
   ) : (
@@ -99,10 +108,14 @@ const Text = ({ sentence }) => {
   );
 };
 
-const Selection = ({ question }) => {
+const Selection = ({ question, toggleQuestionResponse, hide }) => {
+  const cssClassName = hide ? "toggler" : "toggler toggler--open";
   return (
     <div className="selection">
-      <p className="selection_para">{question}</p>
+      <p className="toggler" onClick={toggleQuestionResponse}>
+        {question.description}
+      </p>
+      <p className={cssClassName}>{question.answer}</p>
     </div>
   );
 };

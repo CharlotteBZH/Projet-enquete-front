@@ -16,9 +16,18 @@ export const GET_QUESTION_ERROR = 'GET_QUESTION_ERROR';
 
 export const OPEN_MENU = 'OPEN_MENU';
 
+export const TOGGLE_QUESTION_RESPONSE = 'TOGGLE_QUESTION_RESPONSE';
+
 
 export const REGISTRATION_INPUT_CHANGE = 'REGISTRATION_INPUT_CHANGE';
 export const REGISTRATION_SUBMIT = 'REGISTRATION_SUBMIT';
+
+
+
+export const toggleQuestionResponse = () => ({
+  type: TOGGLE_QUESTION_RESPONSE,
+});
+
 
 export const getStorytellingSuccess = (payload) => ({
   type: GET_STORYTELLING_SUCCESS,

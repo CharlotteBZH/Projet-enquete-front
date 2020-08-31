@@ -12,6 +12,7 @@ import {
   OPEN_MENU,
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
+  TOGGLE_QUESTION_RESPONSE,
 } from "../action";
 
 const initialState = {
@@ -35,6 +36,7 @@ const initialState = {
       alibi: "",
     },
   ],
+  hide: true,
   place: {},
   chapter: {},
   question: [
@@ -66,6 +68,12 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case TOGGLE_QUESTION_RESPONSE:
+      return {
+        ...state,
+        hide: !state.hide,
+      };
+
     case OPEN_MENU:
       return {
         ...state,
