@@ -127,6 +127,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         question: action.payload,
+        hide:!state.hide
       };
     case GET_QUESTION_ERROR:
       return {

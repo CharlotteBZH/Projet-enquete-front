@@ -22,7 +22,7 @@ const Game = ({
   storyCounter,
   open,
   onOpenMenu,
-  toggleQuestionResponse,
+  onToggleQuestion,
   hide,
 }) => {
   // il faudra faire une variable compteur qui viendra remplacer
@@ -44,7 +44,7 @@ const Game = ({
         question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
         questionCounter={questionCounter}
         storyCounter={storyCounter}
-        toggleQuestionResponse={toggleQuestionResponse}
+        toggleQuestionResponse={onToggleQuestion}
         hide={hide}
       />
     </div>
@@ -109,13 +109,14 @@ const Text = ({ sentence }) => {
 };
 
 const Selection = ({ question, toggleQuestionResponse, hide }) => {
-  const cssClassName = hide ? "toggler" : "toggler toggler--open";
+  const cssClassName = hide ? " toggler toggler_close": "toggler_open";
   return (
     <div className="selection">
-      <p className="toggler" onClick={toggleQuestionResponse}>
+      <p className={cssClassName} onClick={toggleQuestionResponse}>
         {question.description}
       </p>
-      <p className={cssClassName}>{question.answer}</p>
+      {(hide==false) && (<p>{question.answer}</p>)}
+      
     </div>
   );
 };
