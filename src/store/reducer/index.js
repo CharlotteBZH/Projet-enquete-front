@@ -1,6 +1,7 @@
 import {
   LOGIN_SUBMIT,
   LOGIN_INPUT_CHANGE,
+  LOGIN_SUCCESS, LOGIN_ERROR,
   REGISTRATION_SUBMIT,
   REGISTRATION_INPUT_CHANGE,
   GET_CHAPTER,
@@ -15,22 +16,24 @@ import {
 } from "../action";
 
 const initialState = {
-  user: [
-    {
-      id: "",
-      pseudo: "",
-      mail: "",
-      checkMail: "",
-      pwd: "",
-      checkPwd: "",
-    },
-  ],
+  user:
+  {
+    id: "",
+    pseudo: 'Player',
+    mail: 'player@gmail.com',
+    checkMail: "",
+    pwd: '1234',
+    checkPwd: "",
+    isLogged: false,
+    error: ''
+  },
+
   character: [
     {
       id: "",
       name: "jules",
       picture: "",
-      is_gulty: "",
+      is_guilty: "",
       is_suspect: "",
       alibi: "",
     },
@@ -50,8 +53,8 @@ const initialState = {
       sentence: "",
     },
   ],
-  isLogged: false,
-  connected: false,
+  /*isLogged: false,
+  connected: false,*/
   loading: false,
   open: false,
   counter: {
@@ -137,6 +140,28 @@ export default (state = initialState, action = {}) => {
           ...state.user,
           ...action.payload,
         },
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+          isLogged: true,
+        },
+        //mail: '',
+        //pwd: '',
+        //error: '',
+        //pseudo: action.payload.pseudo // à vérifier car avant ct loggedmessage avec action.payload.username
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        password: '',
+        error: action.payload,
+        pseudo: '',
+        user: {},
+        isLogged: false
       };
 
     case REGISTRATION_SUBMIT:

@@ -1,7 +1,6 @@
 import React from "react";
-import "./style.scss";
-
 import PropTypes from "prop-types";
+import "./style.scss";
 
 import Menu from "../Menu";
 
@@ -9,6 +8,8 @@ const Connexion = ({
   // data qui vient du state
   mail,
   pwd,
+  pseudo,
+  isLogged,
   // function qui dispatch
   onInputChange,
   onFormLogin,

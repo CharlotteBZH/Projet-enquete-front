@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 
 import Menu from "../Menu";
-//import Alias from '../../containers/Alias';
-import Log from "../../containers/Log";
+import Alias from '../../containers/Alias';
+//import Log from "../../containers/Log";
 
 import PropTypes from "prop-types";
 
@@ -24,8 +24,8 @@ const Home = ({ connected, onClickPlay, onOpenMenu, open }) => {
         </button>
       </Link>
 
-      <div className="tolog">
-        <Log />
+      <div className="toAlias">
+        <Alias />
       </div>
     </div>
   );
@@ -37,16 +37,16 @@ Home.propTypes = {
 
 export default Home;
 
-/*{connected && 
+/*{connected &&
   <Link to={`/play`} >
     <button
       className="play"
       type="button">
       Jouer
     </button>
-  </Link> 
+  </Link>
   }
-  {!connected &&        
+  {!connected &&
   <button
     className="play"
     disabled

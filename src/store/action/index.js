@@ -1,5 +1,9 @@
 export const LOGIN_INPUT_CHANGE = 'LOGIN_INPUT_CHANGE';
+
+export const CHECK_AUTH = 'CHECK_AUTH';
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const GET_CHAPTER = 'GET_CHAPTER';
 export const GET_CHAPTER_SUCCESS = 'GET_CHAPTER_SUCCES';
@@ -19,6 +23,8 @@ export const OPEN_MENU = 'OPEN_MENU';
 
 export const REGISTRATION_INPUT_CHANGE = 'REGISTRATION_INPUT_CHANGE';
 export const REGISTRATION_SUBMIT = 'REGISTRATION_SUBMIT';
+
+
 
 export const getStorytellingSuccess = (payload) => ({
   type: GET_STORYTELLING_SUCCESS,
@@ -66,9 +72,22 @@ export const getQuestionError = (payload) => ({
   payload,
 });
 
+export const checkAuth = () => ({
+  type: CHECK_AUTH
+});
 
 export const loginSubmit = () => ({
-  type: LOGIN_SUBMIT,
+  type: LOGIN_SUBMIT
+});
+
+export const loginSuccess = (payload) => ({
+  type: LOGIN_SUCCESS,
+  payload
+});
+
+export const loginError = (payload) => ({
+  type: LOGIN_ERROR,
+  payload
 });
 
 export const loginInputChange = (payload) => ({

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,21 +14,27 @@ import Connexion from '../../containers/Connexion';
 import Registration from '../../containers/Registration';
 import Game from '../../containers/Game';
 
-const App = () => {
+
+const App = ({ checkAuth }) => {
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth])
+
   return (
     <Router>
       <div className="App">
         <Switch>
           <Route exact path="/">
             <Home />
-            
+
           </Route>
 
           <Route exact path="/logon">
             <Registration />
           </Route>
 
-          <Route exact path="/login"> 
+          <Route exact path="/login">
             <Connexion />
           </Route>
 

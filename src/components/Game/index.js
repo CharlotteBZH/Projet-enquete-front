@@ -32,7 +32,7 @@ const Game = ({
 
   return (
     <div className="game">
-      <img className="picturesBack" src={place.placePicture} />
+      <img className="picturesBack" alt='' src={place.placePicture} />
       <Menu menu={onOpenMenu} open={open} />
       <Log />
       <Tag place={place} />
@@ -68,7 +68,7 @@ const Headband = ({
   //console.log("in headband", storytelling);
   //console.log("questionCounter :",questionCounter);
   //console.log("storyCounter : ",storyCounter)
-  return storyCounter == 1 ? (
+  return storyCounter === 1 ? (
     <div className="headband">
       {<Text sentence={storytelling.sentence} />}
       <ButtonNext next={next} />
@@ -80,15 +80,15 @@ const Headband = ({
       <ButtonNext next={next} />
     </div>
   ) : (
-    /*Là il faudrait "simuler" un clic sur NEXT pour sauter les chapitres/situations sans questions
-        Peut être regarder du côté des REF => pas compris comment s'en servir
-        Et virer le div en dessous :)
-        */
-    <div className="headband">
-      <Selection question="Pas de question" />
-      <ButtonNext next={next} />
-    </div>
-  );
+        /*Là il faudrait "simuler" un clic sur NEXT pour sauter les chapitres/situations sans questions
+            Peut être regarder du côté des REF => pas compris comment s'en servir
+            Et virer le div en dessous :)
+            */
+        <div className="headband">
+          <Selection question="Pas de question" />
+          <ButtonNext next={next} />
+        </div>
+      );
 };
 
 const Text = ({ sentence }) => {
