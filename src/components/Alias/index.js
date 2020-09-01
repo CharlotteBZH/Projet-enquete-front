@@ -20,7 +20,7 @@ function Alias({ pseudo, isLogged }) {
           <span><Icon name="user" className="userLogo" /></span>
         </div>
       )
-      };
+      }
 
     </div>
   );
