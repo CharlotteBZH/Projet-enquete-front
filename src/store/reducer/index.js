@@ -136,7 +136,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         question: action.payload,
-        hide:!state.hide
+        hide: !state.hide,
       };
     case GET_QUESTION_ERROR:
       return {
@@ -178,23 +178,23 @@ export default (state = initialState, action = {}) => {
 
 let setCompter = (state) => {
   console.log("question : ", state.question);
-
-  if (state.counter.storyCounter <= state.storytelling.length) {
-    //console.log("story")
+  console.log(state.counter);
+  if (state.counter.storyCounter < state.storytelling.length) {
+    console.log("story")
     state.counter.chapterCounter = state.counter.chapterCounter;
     state.counter.questionCounter = state.counter.questionCounter;
     state.counter.storyCounter++;
     state.counter.situationCounter = state.counter.situationCounter;
     state.counter.passed = false;
   } else if (state.counter.questionCounter <= state.question.length) {
-    //console.log("tutu")
+    console.log("tutu")
     state.counter.chapterCounter = state.counter.chapterCounter;
     state.counter.questionCounter++;
     state.counter.storyCounter = state.counter.storyCounter;
     state.counter.situationCounter = state.counter.situationCounter;
     state.counter.passed = true;
   } else {
-    //console.log("autre")
+    console.log("autre")
     state.counter.chapterCounter++;
     state.counter.situationCounter++;
     state.counter.questionCounter = 1;

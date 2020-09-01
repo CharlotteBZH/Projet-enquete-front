@@ -3,12 +3,13 @@ import { GET_NEXT, getChapterSuccess, getChapterError, getStorytellingSuccess, g
 
 const nextMiddleware = (store) => (next) => (action) => {
 
-  const chapterId = store.getState().counter.chapterCounter;
+  const chapterId = store.getState().counter.chapterCounter+1;
   const situationId = store.getState().counter.situationCounter;
 
   next(action);
   switch (action.type) {
     case GET_NEXT:
+      console.log("chapter", chapterId);
       axios({
         method: 'get',
         url: `http://localhost:3001/play/situation/${chapterId}`

@@ -92,7 +92,7 @@ const Headband = ({
       {<Text sentence={storytelling.sentence} />}
       <ButtonNext next={next} />
     </div>
-  ) : typeof question !== "undefined" ? (
+  ) : typeof question !== undefined ? (
     <div className="headband">
       <Selection
         question={question}
