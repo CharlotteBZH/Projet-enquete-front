@@ -33,6 +33,7 @@ const authMiddleware = (store) => (next) => (action) => {
                     if (res.data.logged) {
                         store.dispatch(loginSuccess(res.data.info));
                     }
+
                 })
                 .catch((err) => {
                     console.error(err);

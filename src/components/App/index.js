@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
   //Link
 } from "react-router-dom";
 
@@ -15,7 +16,7 @@ import Registration from '../../containers/Registration';
 import Game from '../../containers/Game';
 
 
-const App = ({ checkAuth }) => {
+const App = ({ checkAuth, isLogged }) => {
 
   useEffect(() => {
     checkAuth();
@@ -35,7 +36,8 @@ const App = ({ checkAuth }) => {
           </Route>
 
           <Route exact path="/login">
-            <Connexion />
+            {isLogged ? <Redirect to="/" /> : <Connexion />}
+
           </Route>
 
           <Route exact path="/play">
