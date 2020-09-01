@@ -10,6 +10,8 @@ import "./selection.scss";
 import "./tag.scss";
 import PropTypes from "prop-types";
 
+import soundfile from "../../audio/game_boucle.mp3";
+
 import Menu from "../Menu";
 import Log from "../../containers/Log";
 
@@ -24,6 +26,8 @@ const Game = ({
   onOpenMenu,
   onToggleQuestion,
   hide,
+  mute,
+  onClickMute,
 }) => {
   // il faudra faire une variable compteur qui viendra remplacer
   // le [0] dans le headband
@@ -34,8 +38,17 @@ const Game = ({
 
   return (
     <div className="game">
+      <div>
+        {mute == false && <iframe src={soundfile} allow="autoplay"></iframe>}
+        {mute == true && <iframe></iframe>}
+      </div>
       <img className="picturesBack" src={place.placePicture} />
-      <Menu menu={onOpenMenu} open={open} />
+      <Menu
+        menu={onOpenMenu}
+        open={open}
+        mute={mute}
+        onClickMute={onClickMute}
+      />
       <Log />
       <Tag place={place} />
       <Headband
@@ -109,14 +122,15 @@ const Text = ({ sentence }) => {
 };
 
 const Selection = ({ question, toggleQuestionResponse, hide }) => {
-  const cssClassName = hide ? " toggler toggler_close": "toggler_open";
+  const cssClassName = hide ? " toggler toggler_close" : "toggler_open";
+  console.log("question :", question.description);
+  console.log("response :", question.answer);
   return (
     <div className="selection">
       <p className={cssClassName} onClick={toggleQuestionResponse}>
         {question.description}
       </p>
-      {(hide==false) && (<p>{question.answer}</p>)}
-      
+      {hide == false && <p>{question.answer}</p>}
     </div>
   );
 };

@@ -1,14 +1,18 @@
 import { connect } from "react-redux";
 import Menu from "../components/Menu";
-import { openMenu } from '../store/action';
+import { openMenu, onMute } from '../store/action';
 
 const mapState = (state) => ({
     open: state.open,
+    mute: state.mute,
 });
 
 const mapDispatch = (dispatch) => ({
     onOpenMenu: () => {
         dispatch(openMenu());
+    },
+    onClickMute: () => {
+        dispatch(onMute());
     },
 });
 

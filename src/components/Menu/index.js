@@ -1,12 +1,9 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-//import { Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import "./style.scss";
 
-//import Menu from "../../containers/Menu";
-
-const Menu = ({ open, menu }) => {
+const Menu = ({ open, menu, mute, onClickMute }) => {
   return (
     <div>
       <div className="menuButton" onClick={menu}>
@@ -14,8 +11,12 @@ const Menu = ({ open, menu }) => {
       </div>
       {open && (
         <div>
-          <button>Accueil</button> <button>Mute</button>
-          <button>Notebook</button>
+          <Link to={`/`}>
+            <button>Accueil</button>
+          </Link>
+          <button mute={mute} onClick={onClickMute}>
+            Mute
+          </button>
         </div>
       )}
     </div>

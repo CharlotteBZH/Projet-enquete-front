@@ -22,6 +22,12 @@ export const TOGGLE_QUESTION_RESPONSE = 'TOGGLE_QUESTION_RESPONSE';
 export const REGISTRATION_INPUT_CHANGE = 'REGISTRATION_INPUT_CHANGE';
 export const REGISTRATION_SUBMIT = 'REGISTRATION_SUBMIT';
 
+export const ON_MUTE = 'ON_MUTE';
+
+
+export const onMute = () => ({
+  type: ON_MUTE,
+});
 
 
 export const toggleQuestionResponse = () => ({

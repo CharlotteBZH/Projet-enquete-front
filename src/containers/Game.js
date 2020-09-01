@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Game from "../components/Game";
-import { getNext, openMenu, toggleQuestionResponse } from "../store/action";
+import { getNext, openMenu, toggleQuestionResponse, onMute } from "../store/action";
 
 const mapState = (state) => ({
   hide: state.hide,
@@ -11,6 +11,7 @@ const mapState = (state) => ({
   storyCounter: state.counter.storyCounter,
   questionCounter: state.counter.questionCounter,
   open: state.open,
+  mute: state.mute,
 });
 
 const mapDispatch = (dispatch) => ({
@@ -23,6 +24,9 @@ const mapDispatch = (dispatch) => ({
   onToggleQuestion: () => {
     dispatch(toggleQuestionResponse());
   },
+  onClickMute: () => {
+    dispatch(onMute());
+},
 });
 
 export default connect(mapState, mapDispatch)(Game);

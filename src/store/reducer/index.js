@@ -13,6 +13,7 @@ import {
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
   TOGGLE_QUESTION_RESPONSE,
+  ON_MUTE,
 } from "../action";
 
 const initialState = {
@@ -36,7 +37,7 @@ const initialState = {
       alibi: "",
     },
   ],
-  hide: true,
+  hide: false,
   place: {},
   chapter: {},
   question: [
@@ -52,6 +53,7 @@ const initialState = {
       sentence: "",
     },
   ],
+  mute: false,
   isLogged: false,
   connected: false,
   loading: false,
@@ -68,6 +70,12 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case ON_MUTE:
+      return {
+        ...state,
+        mute: !state.mute,
+      };
+
     case TOGGLE_QUESTION_RESPONSE:
       return {
         ...state,
@@ -89,6 +97,7 @@ export default (state = initialState, action = {}) => {
       const payload = action.payload[0];
       return {
         ...state,
+        open: false,
         place: {
           placeId: payload["place.id"],
           placeName: payload["place.name"],
