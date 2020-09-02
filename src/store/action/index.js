@@ -5,6 +5,9 @@ export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 
+export const LOGOUT = 'LOGOUT';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+
 export const REGISTRATION_INPUT_CHANGE = 'REGISTRATION_INPUT_CHANGE';
 export const REGISTRATION_SUBMIT = 'REGISTRATION_SUBMIT';
 export const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
@@ -44,6 +47,8 @@ export const getStorytellingError = (payload) => ({
 export const openMenu = () => ({
   type: OPEN_MENU,
 });
+
+
 
 
 export const getChapter = () => ({
@@ -97,6 +102,14 @@ export const loginError = (payload) => ({
 export const loginInputChange = (payload) => ({
   type: LOGIN_INPUT_CHANGE,
   payload,
+});
+
+export const logout = () => ({
+  type: LOGOUT
+});
+
+export const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS
 });
 
 

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import {
-    CHECK_AUTH,
     REGISTRATION_SUBMIT,
     registrationSuccess,
     RegistrationError,
     LOGIN_SUBMIT,
+    LOGOUT, logoutSuccess,
     loginSuccess,
     loginError
 } from '../action';
@@ -41,6 +41,21 @@ const authMiddleware = (store) => (next) => (action) => {
                 .then((res) => {
                     console.log(res.data);
                     store.dispatch(registrationSuccess(res.data));
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+            break;
+        }
+        case LOGOUT: {
+            axios({
+                method: 'post',
+                url: 'http://localhost:3001/logout',
+                withCredentials: true
+            })
+                .then((res) => {
+                    console.log(res.data);
+                    store.dispatch(logoutSuccess());
                 })
                 .catch((err) => {
                     console.error(err);

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import './style.scss';
 
-function Alias({ pseudo, isLogged }) {
+function Alias({ pseudo, isLogged, handleLogout, disconnected }) {
   return (
     <div className="alias">
       {!isLogged && (
@@ -18,9 +18,20 @@ function Alias({ pseudo, isLogged }) {
         <div className="pseudo">
           <span>{pseudo}</span>
           <span><Icon name="user" className="userLogo" /></span>
+          |<span>{!disconnected && (
+            <span className="decoButton"
+              onClick={handleLogout}>
+              Déconnexion
+            </span>
+          )}
+          </span>
+
         </div>
       )
       }
+      {disconnected && (
+        <Redirect to="/" />
+      )}
 
     </div>
   );

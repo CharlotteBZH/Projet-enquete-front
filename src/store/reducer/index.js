@@ -2,6 +2,7 @@ import {
   LOGIN_SUBMIT,
   LOGIN_INPUT_CHANGE,
   LOGIN_SUCCESS, LOGIN_ERROR,
+  LOGOUT_SUCCESS,
   REGISTRATION_SUBMIT,
   REGISTRATION_INPUT_CHANGE,
   REGISTRATION_SUCCESS, REGISTRATION_ERROR,
@@ -14,6 +15,7 @@ import {
   OPEN_MENU,
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
+
 } from "../action";
 
 const initialState = {
@@ -58,6 +60,8 @@ const initialState = {
   connected: false,*/
   loading: false,
   open: false,
+  disconnected: false,
+
   counter: {
     chapterCounter: 1,
     storyCounter: 1,
@@ -149,6 +153,7 @@ export default (state = initialState, action = {}) => {
           ...state.user,
           ...action.payload,
           isLogged: true,
+          disconnected: false,
         }
       };
     case LOGIN_ERROR:
@@ -159,6 +164,13 @@ export default (state = initialState, action = {}) => {
         pseudo: '',
         user: {},
         isLogged: false
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isLogged: false,
+        disconnected: true,
+        user: {}
       };
 
     case REGISTRATION_SUBMIT:
