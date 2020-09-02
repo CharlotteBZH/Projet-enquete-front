@@ -7,7 +7,7 @@ import {
 
 const mapState = (state) => ({
     mail: state.user.mail,
-    pwd: state.user.pdw,
+    pwd: state.user.pwd,
     isLogged: state.user.isLogged,
     pseudo: state.user.pseudo
 });
