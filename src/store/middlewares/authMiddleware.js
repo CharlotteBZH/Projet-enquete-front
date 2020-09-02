@@ -39,37 +39,15 @@ const authMiddleware = (store) => (next) => (action) => {
                 withCredentials: true
             })
                 .then((res) => {
-                    console.log(res.data.info);
-                    if (res.data.logged) {
-                        store.dispatch(registrationSuccess(res.data.info));
-                    }
-
+                    console.log(res.data);
+                    store.dispatch(registrationSuccess(res.data));
                 })
                 .catch((err) => {
                     console.error(err);
                 })
             break;
         }
-        /*
-    case CHECK_AUTH: {
-        axios({
-            method: 'post',
-            url: 'http://localhost:3001/isLogged',
-            withCredentials: true
-        })
-            .then((res) => {
-                console.log(res.data);
-                if (res.data.logged) {
-                    store.dispatch(loginSuccess(res.data.info));
-                }
 
-            })
-            .catch((err) => {
-                console.error(err);
-            })
-        break;
-    }
-    */
         default:
             return;
     }
