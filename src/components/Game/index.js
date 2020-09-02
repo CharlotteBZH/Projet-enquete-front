@@ -11,7 +11,8 @@ import "./tag.scss";
 import PropTypes from "prop-types";
 
 import Menu from "../Menu";
-import Log from "../../containers/Log";
+import Alias from "../../containers/Alias";
+
 
 const Game = ({
   place,
@@ -21,7 +22,7 @@ const Game = ({
   questionCounter,
   storyCounter,
   open,
-  onOpenMenu,
+  onOpenMenu
 }) => {
   // il faudra faire une variable compteur qui viendra remplacer
   // le [0] dans le headband
@@ -34,7 +35,7 @@ const Game = ({
     <div className="game">
       <img className="picturesBack" alt='' src={place.placePicture} />
       <Menu menu={onOpenMenu} open={open} />
-      <Log />
+      <Alias />
       <Tag place={place} />
       <Headband
         storytelling={storytelling[0]}

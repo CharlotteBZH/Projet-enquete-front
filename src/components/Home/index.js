@@ -8,7 +8,7 @@ import Alias from '../../containers/Alias';
 
 import PropTypes from "prop-types";
 
-const Home = ({ connected, onClickPlay, onOpenMenu, open }) => {
+const Home = ({ isLogged, onClickPlay, onOpenMenu, open }) => {
   return (
     <div className="home">
       <div className="menuButton">
@@ -18,11 +18,19 @@ const Home = ({ connected, onClickPlay, onOpenMenu, open }) => {
         <h1>Enquête CLUED'O</h1>
       </span>
 
-      <Link to={`/play`}>
-        <button className="play" type="button" onClick={onClickPlay}>
+      {isLogged && (
+        <Link to={`/play`}>
+          <button className="play" type="button" onClick={onClickPlay}>
+            Jouer
+        </button>
+        </Link>
+      )}
+
+      {!isLogged && (
+        <button disabled className="play-disabled" type="button" onClick={onClickPlay}>
           Jouer
         </button>
-      </Link>
+      )}
 
       <div className="toAlias">
         <Alias />

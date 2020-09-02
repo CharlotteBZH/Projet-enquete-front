@@ -27,7 +27,7 @@ const App = ({ checkAuth, isLogged }) => {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home isLogged={isLogged} />
 
           </Route>
 
