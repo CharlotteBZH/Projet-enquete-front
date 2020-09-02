@@ -19,10 +19,10 @@ const initialState = {
   user:
   {
     id: "",
-    pseudo: 'Player',
-    mail: 'player@gmail.com',
+    pseudo: '',
+    mail: '',
     checkMail: "",
-    pwd: '1234',
+    pwd: '',
     checkPwd: "",
     isLogged: false,
     error: ''
@@ -148,16 +148,12 @@ export default (state = initialState, action = {}) => {
           ...state.user,
           ...action.payload,
           isLogged: true,
-        },
-        //mail: '',
-        //pwd: '',
-        //error: '',
-        //pseudo: action.payload.pseudo // à vérifier car avant ct loggedmessage avec action.payload.username
+        }
       };
     case LOGIN_ERROR:
       return {
         ...state,
-        password: '',
+        pwd: '',
         error: action.payload,
         pseudo: '',
         user: {},

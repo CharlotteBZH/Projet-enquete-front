@@ -43,7 +43,7 @@ const Connexion = ({
 
         <input
           type="password"
-          name="pdw"
+          name="pwd"
           value={pwd}
           placeholder="Entrez votre mot de passe"
           required
