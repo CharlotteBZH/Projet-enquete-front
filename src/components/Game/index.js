@@ -15,26 +15,28 @@ import soundfile from "../../audio/game_boucle.mp3";
 import Menu from "../Menu";
 import Log from "../../containers/Log";
 
-const Game = ({
-  place,
-  storytelling,
-  onClickNext,
-  question,
-  questionCounter,
-  storyCounter,
-  open,
-  onOpenMenu,
-  onToggleQuestion,
-  hide,
-  mute,
-  onClickMute,
-}) => {
+const Game = (props) => {
   // il faudra faire une variable compteur qui viendra remplacer
   // le [0] dans le headband
   //console.log("questionAffichage : ", questionCounter);
+  const {
+    place,
+    storytelling,
+    onClickNext,
+    question,
+    questionCounter,
+    storyCounter,
+    open,
+    onOpenMenu,
+    onToggleQuestion,
+    hide,
+    mute,
+    onClickMute,
+  } = props;
   console.log(
     "------------------------------------------------------------------------"
   );
+  console.log(props);
 
   return (
     <div className="game">
@@ -52,8 +54,9 @@ const Game = ({
       <Log />
       <Tag place={place} />
       <Headband
-        storytelling={storytelling[0]}
+        storytelling={storytelling[storyCounter -1]}
         next={onClickNext}
+        isLast={storyCounter === storytelling . length - 1}
         question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
         questionCounter={questionCounter}
         storyCounter={storyCounter}
@@ -81,12 +84,21 @@ const Headband = ({
   question,
   storyCounter,
   questionCounter,
+  isLast,
   toggleQuestionResponse,
   hide,
 }) => {
   //console.log("in headband", storytelling);
   //console.log("questionCounter :",questionCounter);
   //console.log("storyCounter : ",storyCounter)
+
+  // Soit il y a des questions à la fin
+    // afficher storytelling.sentence tant qu'il y en a
+
+    // Si shouldDisplayQuestion
+      // Afficher <Selection />
+    // Sinon Afficher <Text />
+
   return storyCounter == 1 ? (
     <div className="headband">
       {<Text sentence={storytelling.sentence} />}
@@ -107,7 +119,7 @@ const Headband = ({
         Et virer le div en dessous :)
         */
     <div className="headband">
-      <Selection question="Pas de question" />
+      
       <ButtonNext next={next} />
     </div>
   );

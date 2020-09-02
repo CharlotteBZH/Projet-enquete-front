@@ -4,7 +4,7 @@ import { GET_NEXT, getChapterSuccess, getChapterError, getStorytellingSuccess, g
 const nextMiddleware = (store) => (next) => (action) => {
 
   const chapterId = store.getState().counter.chapterCounter+1;
-  const situationId = store.getState().counter.situationCounter;
+  const situationId = store.getState().counter.situationCounter+1;
 
   next(action);
   switch (action.type) {
@@ -15,22 +15,27 @@ const nextMiddleware = (store) => (next) => (action) => {
         url: `http://localhost:3001/play/situation/${chapterId}`
       })
         .then((res) => {
-          store.dispatch(getChapterSuccess(res.data));
-
+          // store.dispatch(getChapterSuccess(res.data));
+          const chapter = res.data;
 
           axios({
             method: 'get',
             url: `http://localhost:3001/play/storytelling/${chapterId}`
           })
             .then((res) => {
-              store.dispatch(getStorytellingSuccess(res.data));
+              // store.dispatch(getStorytellingSuccess(res.data));
+              const story = res.data;
             
               axios({
                 method: 'get',
                 url: `http://localhost:3001/play/question/${situationId}`
               })
                 .then((res) => {
-                  store.dispatch(getQuestionSuccess(res.data));
+                  const questions = res.data;
+
+                  store.dispatch(getQuestionSuccess(questions));
+                  store.dispatch(getStorytellingSuccess(story));
+                  store.dispatch(getChapterSuccess(chapter));
                 })
                 .catch((err) => {
                   store.dispatch(getQuestionError('Impossible de récupérer les questions...'))

@@ -129,7 +129,10 @@ export default (state = initialState, action = {}) => {
     case GET_NEXT:
       return {
         ...state,
-        counter: setCompter(state),
+        counter: {
+          ...state.counter,
+          ...setCompter(state)
+        },
       };
 
     case GET_QUESTION_SUCCESS:
@@ -176,31 +179,42 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-let setCompter = (state) => {
+let setCompter = (oldState) => {
+  const state = {...oldState};
   console.log("question : ", state.question);
   console.log(state.counter);
   if (state.counter.storyCounter < state.storytelling.length) {
-    console.log("story")
-    state.counter.chapterCounter = state.counter.chapterCounter;
-    state.counter.questionCounter = state.counter.questionCounter;
+    alert("story incrementation")
     state.counter.storyCounter++;
-    state.counter.situationCounter = state.counter.situationCounter;
     state.counter.passed = false;
-  } else if (state.counter.questionCounter <= state.question.length) {
-    console.log("tutu")
-    state.counter.chapterCounter = state.counter.chapterCounter;
+    state.counter.shouldDisplayQuestions = false;
+    // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
+  } else if(){
+    // state.counter.shouldDisplayQuestions = true
+  } 
+  
+  else if (state.counter.questionCounter <= state.question.length) {
+    alert("question incrementation")
     state.counter.questionCounter++;
-    state.counter.storyCounter = state.counter.storyCounter;
-    state.counter.situationCounter = state.counter.situationCounter;
-    state.counter.passed = true;
-  } else {
-    console.log("autre")
+    // state.counter.passed = true;
+  } else if(/* arrivé au bout des questions || (pas de question && aubout des story) */){
+    state.counter.shouldDisplayQuestions = false;
+
+    alert("chapter incrementation")
     state.counter.chapterCounter++;
     state.counter.situationCounter++;
     state.counter.questionCounter = 1;
     state.counter.storyCounter = 1;
-    state.counter.passed = false;
+    // state.counter.passed = false;
   }
+
+  // else {
+  //   // state.counter.chapterCounter++;
+  //   // state.counter.situationCounter++;
+  //   // state.counter.questionCounter = 1;
+  //   // state.counter.storyCounter = 1;
+  //   // state.counter.passed = false;
+  // }
   //console.log("passedSortie : ", state.counter.passed);
   console.log("chapterSortie : ", state.counter.chapterCounter);
   console.log("storySortie : ", state.counter.storyCounter);
