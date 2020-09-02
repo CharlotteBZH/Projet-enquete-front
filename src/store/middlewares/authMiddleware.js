@@ -1,5 +1,13 @@
 import axios from 'axios';
-import { CHECK_AUTH, LOGIN_SUBMIT, loginSuccess, loginError } from '../action';
+import {
+    CHECK_AUTH,
+    REGISTRATION_SUBMIT,
+    registrationSuccess,
+    RegistrationError,
+    LOGIN_SUBMIT,
+    loginSuccess,
+    loginError
+} from '../action';
 
 const authMiddleware = (store) => (next) => (action) => {
 
@@ -22,16 +30,18 @@ const authMiddleware = (store) => (next) => (action) => {
                     store.dispatch(loginError('Impossible de connecter cet utilisateur'));
                 })
             break;
-        case CHECK_AUTH: {
+        case REGISTRATION_SUBMIT: {
+            const { user } = store.getState();
             axios({
                 method: 'post',
-                url: 'http://localhost:3001/isLogged',
+                url: 'http://localhost:3001/logon',
+                data: user,
                 withCredentials: true
             })
                 .then((res) => {
-                    console.log(res.data);
+                    console.log(res.data.info);
                     if (res.data.logged) {
-                        store.dispatch(loginSuccess(res.data.info));
+                        store.dispatch(registrationSuccess(res.data.info));
                     }
 
                 })
@@ -40,6 +50,26 @@ const authMiddleware = (store) => (next) => (action) => {
                 })
             break;
         }
+        /*
+    case CHECK_AUTH: {
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/isLogged',
+            withCredentials: true
+        })
+            .then((res) => {
+                console.log(res.data);
+                if (res.data.logged) {
+                    store.dispatch(loginSuccess(res.data.info));
+                }
+
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+        break;
+    }
+    */
         default:
             return;
     }

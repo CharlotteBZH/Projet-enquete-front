@@ -4,6 +4,7 @@ import {
   LOGIN_SUCCESS, LOGIN_ERROR,
   REGISTRATION_SUBMIT,
   REGISTRATION_INPUT_CHANGE,
+  REGISTRATION_SUCCESS, REGISTRATION_ERROR,
   GET_CHAPTER,
   GET_CHAPTER_SUCCESS,
   GET_CHAPTER_ERROR,
@@ -172,6 +173,24 @@ export default (state = initialState, action = {}) => {
           ...state.user,
           ...action.payload,
         },
+      };
+    case REGISTRATION_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+          isLogged: true,
+        }
+      };
+    case REGISTRATION_ERROR:
+      return {
+        ...state,
+        pwd: '',
+        error: action.payload,
+        pseudo: '',
+        user: {},
+        isLogged: false
       };
 
     default:
