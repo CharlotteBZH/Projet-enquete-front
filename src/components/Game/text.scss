@@ -1,12 +1,14 @@
 .text {
+  overflow: auto;
+  height: 160px;
   font-size: 1.8rem;
   margin: 30px;
-  padding: 2rem;
+  padding: 0.5rem 1rem;
   position: relative;
   width: 75%;
-  background-color: rgba(255, 255, 255, 0.349);
+  background-color: #d4d4d5ba;
 }
 
-.text p{
-  line-height: 1.8em;
+.text p {
+  // line-height: 1.8em;
 }

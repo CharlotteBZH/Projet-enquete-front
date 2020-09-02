@@ -13,8 +13,9 @@ const Menu = ({ open, menu }) => {
         Menu
       </div>
       {open && (
-        <div>
-          <button>Accueil</button> <button>Mute</button>
+        <div className="buttonOnMenu">
+          <button>Accueil</button>
+          <button>Mute</button>
           <button>Notebook</button>
         </div>
       )}

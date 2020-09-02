@@ -1,6 +1,13 @@
 .tag {
-   font-size: 5em; 
-   height: 1em;
-   width: 1em;
-   background-color: #f0f;
+  padding: 3px;
+  border: solid 1px rgba(0, 0, 0, 0.71);
+  background-color: #d4d4d5ba;
+  z-index: 1;
+  font-size: 5em;
+  display: flex;
+  position: absolute;
+  bottom: 31%;
+  width: auto;
+  height: auto;
+  margin-left: 4rem;
 }

@@ -11,22 +11,32 @@ import PropTypes from "prop-types";
 const Home = ({ connected, onClickPlay, onOpenMenu, open }) => {
   return (
     <div className="home">
-      <div className="menuButton">
-        <Menu menu={onOpenMenu} open={open} />
+      <div className="header">
+        <div className="menuButton">
+          <Menu menu={onOpenMenu} open={open} />
+        </div>
+        <div className="tolog">
+          <Log />
+        </div>
       </div>
+
       <span className="title-game">
-        <h1>Enquête CLUED'O</h1>
+        <div className="title-game-setting">
+          <h1>Enquête CLUED'O</h1>
+        </div>
       </span>
 
       <Link to={`/play`}>
-        <button className="play" type="button" onClick={onClickPlay}>
-          Jouer
-        </button>
+        <div className="start">
+          <button
+            className="playButtonClick"
+            type="button"
+            onClick={onClickPlay}
+          >
+            Jouer
+          </button>
+        </div>
       </Link>
-
-      <div className="tolog">
-        <Log />
-      </div>
     </div>
   );
 };
