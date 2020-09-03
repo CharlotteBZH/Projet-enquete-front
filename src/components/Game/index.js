@@ -33,9 +33,15 @@ const Game = ({
 
   return (
     <div className="game">
-      <img className="picturesBack" alt='' src={place.placePicture} />
-      <Menu menu={onOpenMenu} open={open} />
-      <Alias />
+      <div className="header">
+        <div className="menuButton">
+          <Menu menu={onOpenMenu} open={open} />
+        </div>
+        <div >
+
+        </div>
+      </div>
+      <img className="picturesBack" src={place.placePicture} />
       <Tag place={place} />
       <Headband
         storytelling={storytelling[0]}
@@ -76,8 +82,8 @@ const Headband = ({
     </div>
   ) : typeof question !== "undefined" ? (
     <div className="headband">
-      <Selection question={question.description} />}
-      <Selection question={question.answer} />}
+      <Selection question={question.description} />
+      <Selection question={question.answer} />
       <ButtonNext next={next} />
     </div>
   ) : (
@@ -111,9 +117,9 @@ const Selection = ({ question }) => {
 const ButtonNext = ({ next }) => {
   return (
     <Link to={`/play`}>
-      <button className="buttonNext" type="button" onClick={next}>
+      <div className="buttonNext" type="button" onClick={next}>
         <Icon circular inverted color="grey" name="play" size="big" />
-      </button>
+      </div>
     </Link>
   );
 };
