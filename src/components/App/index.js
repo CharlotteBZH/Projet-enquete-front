@@ -32,7 +32,7 @@ const App = ({ checkAuth, isLogged }) => {
           </Route>
 
           <Route exact path="/logon">
-            <Registration />
+            {isLogged ? <Redirect to="/" /> : <Registration />}
           </Route>
 
           <Route exact path="/login">

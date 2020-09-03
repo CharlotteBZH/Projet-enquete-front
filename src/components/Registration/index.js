@@ -7,20 +7,20 @@ import Menu from "../Menu";
 const Registration = ({
   // data qui vient du state
   pseudo,
-  mail, 
-  checkMail, 
+  mail,
+  checkMail,
   pwd,
   checkPwd,
   // function qui dispatch
   onInputChange,
   onFormRegistration,
-  }) => {
+}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onFormRegistration();
   };
-  
+
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
     onInputChange({
@@ -32,9 +32,9 @@ const Registration = ({
       <Menu />
       <h1>Formulaire d'inscription</h1>
 
-      <form 
-      className="registration-form"
-      onSubmit={handleSubmit}
+      <form
+        className="registration-form"
+        onSubmit={handleSubmit}
       >
         <input
           type="text"
