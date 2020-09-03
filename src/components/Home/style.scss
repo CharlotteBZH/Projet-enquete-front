@@ -6,38 +6,44 @@
   height: 100vh;
 }
 
-.title-game {
-  display: flex;
-  justify-content: center;
-}
 
-.title-game-setting {
-  top: 10%;
-  position: absolute;
+
+.content-container {
+  margin-top: 5rem;
   text-align: center;
-  font-size: 2em;
   font-family: "Pangolin", cursive;
-}
 
-.start{
-  position: absolute;
-  bottom: 40%;
-  left:48%;
-}
+  &__title{
+    font-size:3.5rem;
+  }
 
-.playButtonClick {
-    font-family: "Pangolin", cursive;
-    font-size: 1.5em;
+  &__sysnopsis{
+    font-style: italic;
+    font-size:2rem;
+  }
+
+  &__start{
+   // position: absolute;
+    //@at-root: 40%;
+    //left:48%;
+  }
+
+  &__playButtonClick {
+    margin-top: 2rem;
+    font-size: 2em;
     color: #ffff;
     background-color: gray;
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
 }
+}
+
+
+
+
+
 
 .header {
   display: flex;

@@ -36,29 +36,41 @@ const Home = ({
           <Alias />
         </div>
       </div>
-      <span className="title-game">
-        <div className="title-game-setting">
-          <h1>Enquête CLUED'O</h1>
-        </div>
-      </span>
-      {isLogged && (
-        <Link to={`/play`}>
-          <div className="start">
-            <button className="playButtonClick" type="button" onClick={onClickPlay}>
-              Jouer
-        </button>
-          </div>
-        </Link>
-      )}
-      {!isLogged && (
-        <div className="start">
-          <button disabled className="playButtonClick" type="button" onClick={onClickPlay}>
-            Jouer
-        </button>
-        </div>
-      )}
 
-    </div>
+      <div className="content-container">
+        <h1 className="content-container__title">Meurtre à O'Beach</h1>
+        <div className="content-container__sysnopsis">
+          <p >
+            Invité par ton ex pour passer des vacances à la mer, tu te disputes avec elle en arrivant.
+            </p>
+          <p>Le lendemain elle est retrouvée morte.Et le seul suspect aux yeux de tous, c'est TOI. </p>
+          <p>Comment prouveras tu ton innocence ...?</p>
+        </div>
+        {
+          isLogged && (
+            <Link to={`/play`}>
+              <div className="content-container__start">
+                <button className="content-container__playButtonClick" type="button" onClick={onClickPlay}>
+                  Jouer
+                </button>
+              </div>
+            </Link>
+          )
+        }
+        {
+          !isLogged && (
+            <div className="content-container__start">
+              <button disabled className="content-container__playButtonClick" type="button" onClick={onClickPlay}>
+                Jouer
+        </button>
+            </div>
+          )
+        }
+      </div>
+
+
+
+    </div >
   );
 };
 
