@@ -308,7 +308,7 @@ return state.counter;*/
 
 
 //test for ending --not good yet
-  /*if (state.counter.chapterCounter < state.chapter.length) {
+  /*if (state.counter.chapterCounter !=19) {
     state.counter.shouldDisplayChapter = true;
     if (state.counter.storyCounter < state.storytelling.length) {
       //alert("story incrementation")
