@@ -65,7 +65,7 @@ const initialState = {
     questionCounter: 1,
     situationCounter: 1,
     //characterCounter : 1, Pour quand il y aura un charactere
-    shouldDisplayQuestion:false,
+    shouldDisplayQuestion: false,
   },
 };
 
@@ -130,6 +130,7 @@ export default (state = initialState, action = {}) => {
     case GET_NEXT:
       return {
         ...state,
+        hide: true,
         counter: {
           ...state.counter,
           ...setCompter(state)
@@ -181,7 +182,7 @@ export default (state = initialState, action = {}) => {
 };
 
 let setCompter = (oldState) => {
-  const state = {...oldState};
+  const state = { ...oldState };
   console.log("question : ", state.question);
   console.log(state.counter);
   if (state.counter.storyCounter < state.storytelling.length) {
@@ -189,17 +190,17 @@ let setCompter = (oldState) => {
     state.counter.storyCounter++;
     state.counter.shouldDisplayQuestion = false;
     // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
-  } else if((state.counter.storyCounter === state.storytelling.length-1)&&(state.question.length)){
+  } else if ((state.counter.storyCounter === state.storytelling.length) && (state.question.length) && !state.counter.shouldDisplayQuestion) {
     state.counter.shouldDisplayQuestion = true
-  } 
-  
-  else if (state.counter.questionCounter <= state.question.length) {
+  }
+
+  else if (state.counter.questionCounter < state.question.length) {
     //alert("question incrementation")
     state.counter.questionCounter++;
     //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
-  } else if(state.counter.questionCounter === state.question.length || 
-    (state.question.length==0 && state.counter.storyCounter === state.storytelling.length )){
-    state.counter.shouldDisplayQuestions = false;
+  } else if (state.counter.questionCounter === state.question.length ||
+    (state.question.length == 0 && state.counter.storyCounter === state.storytelling.length)) {
+    state.counter.shouldDisplayQuestion = false;
 
     //alert("chapter incrementation")
     state.counter.chapterCounter++;
