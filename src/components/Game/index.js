@@ -32,6 +32,7 @@ const Game = (props) => {
     hide,
     mute,
     onClickMute,
+    shouldDisplayQuestion,
   } = props;
   console.log(
     "------------------------------------------------------------------------"
@@ -62,6 +63,7 @@ const Game = (props) => {
         storyCounter={storyCounter}
         toggleQuestionResponse={onToggleQuestion}
         hide={hide}
+        shouldDisplayQuestion={shouldDisplayQuestion}
       />
     </div>
   );
@@ -87,6 +89,7 @@ const Headband = ({
   isLast,
   toggleQuestionResponse,
   hide,
+  shouldDisplayQuestion
 }) => {
   //console.log("in headband", storytelling);
   //console.log("questionCounter :",questionCounter);
@@ -98,14 +101,10 @@ const Headband = ({
     // Si shouldDisplayQuestion
       // Afficher <Selection />
     // Sinon Afficher <Text />
-
-  return storyCounter == 1 ? (
-    <div className="headband">
-      {<Text sentence={storytelling.sentence} />}
-      <ButtonNext next={next} />
-    </div>
-  ) : typeof question !== undefined ? (
-    <div className="headband">
+  return (
+  <div className="headband">
+    {shouldDisplayQuestion && (
+      <div className="headband">
       <Selection
         question={question}
         toggleQuestionResponse={toggleQuestionResponse}
@@ -113,16 +112,15 @@ const Headband = ({
       />
       <ButtonNext next={next} />
     </div>
-  ) : (
-    /*Là il faudrait "simuler" un clic sur NEXT pour sauter les chapitres/situations sans questions
-        Peut être regarder du côté des REF => pas compris comment s'en servir
-        Et virer le div en dessous :)
-        */
+    )}
+    {!shouldDisplayQuestion && (
     <div className="headband">
-      
+      {<Text sentence={storytelling.sentence} />}
       <ButtonNext next={next} />
     </div>
-  );
+    )} 
+  </div> 
+  )
 };
 
 const Text = ({ sentence }) => {

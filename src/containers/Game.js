@@ -12,6 +12,7 @@ const mapState = (state) => ({
   questionCounter: state.counter.questionCounter,
   open: state.open,
   mute: state.mute,
+  shouldDisplayQuestion: state.counter.shouldDisplayQuestion
 });
 
 const mapDispatch = (dispatch) => ({
