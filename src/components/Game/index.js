@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 
 import soundfile from "../../audio/game_boucle.mp3";
 
-import Menu from "../Menu";
+import Menu from "../../containers/Menu";
 import Alias from "../../containers/Alias";
 
 

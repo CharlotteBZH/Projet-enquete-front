@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
 import Menu from "../Menu";
+import "semantic-ui-css/semantic.min.css"
 
 
 import soundfile from "../../audio/startGame.mp3";
@@ -19,12 +20,12 @@ const Home = ({
 }) => {
   return (
     <div className="home">
-      <div>
+      {/*<div>
         {mute === false && <iframe title="music" src={soundfile} allow="autoplay"></iframe>}
         {mute === true && <iframe title="mute"></iframe>}
-      </div>
+      </div>*/}
       <div className="header">
-        <div className="menuButton">
+        <div className="header-menu">
           <Menu
             menu={onOpenMenu}
             open={open}
@@ -32,12 +33,12 @@ const Home = ({
             onClickMute={onClickMute}
           />
         </div>
-        <div className="toLog">
+        <div className="header-alias">
           <Alias />
         </div>
       </div>
 
-      <div className="content-container">
+      <div id="content-home" className="content-container">
         <h1 className="content-container__title">Meurtre à O'Beach</h1>
         <div className="content-container__sysnopsis">
           <p >
@@ -60,9 +61,12 @@ const Home = ({
         {
           !isLogged && (
             <div className="content-container__start">
-              <button disabled className="content-container__playButtonClick" type="button" onClick={onClickPlay}>
+              <button
+                className="content-container__playButtonClick disabled"
+                type="button" onClick={onClickPlay}>
                 Jouer
-        </button>
+              </button>
+              <p className="content-container__message">Connecte-toi pour jouer</p>
             </div>
           )
         }
