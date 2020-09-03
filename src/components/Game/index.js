@@ -71,25 +71,6 @@ const Game = ({
   );
 };
 
-
-/*{shouldDisplayChapter && 
-  <div>
-    {<Tag placeName={place.placeName} />}
-    {<Headband
-      storytelling={storytelling[storyCounter - 1]}
-      next={onClickNext}
-      isLast={storyCounter === storytelling.length - 1}
-      question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
-      questionCounter={questionCounter}
-      storyCounter={storyCounter}
-      toggleQuestionResponse={onToggleQuestion}
-      hide={hide}
-      shouldDisplayQuestion={shouldDisplayQuestion}
-    />}
-  </div>
-  }
-  {!shouldDisplayChapter && <End />}*/
-
 export default Game;
 
 const Tag = ({ placeName }) => {
@@ -133,6 +114,40 @@ const Headband = ({
     </div>
   )
 };
+
+//exemple si ça fonctionnait de comment recup info character
+//il faudrait aussi include le tag au headBand ou l'entourer par la vérif de shouldDisplayQuestion
+/*
+return (
+    <div className="headband">
+      {shouldDisplayQuestion && (
+        <div className="headband">
+          <Selection
+            question={question}
+            toggleQuestionResponse={toggleQuestionResponse}
+            hide={hide}
+          />
+          <ButtonNext next={next} />
+        </div>
+      )}
+      {!shouldDisplayQuestion && (
+        <div className="headband">
+          <img src={character.picture} alt={character.name}/>
+          {<Text sentence={storytelling.sentence} />}
+          <ButtonNext next={next} />
+        </div>
+      )}
+    </div>
+  )
+*/
+
+
+
+
+
+
+
+
 
 const Text = ({ sentence }) => {
   return (

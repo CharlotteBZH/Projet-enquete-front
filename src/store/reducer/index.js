@@ -67,7 +67,7 @@ const initialState = {
     situationCounter: 1,
     characterCounter : 1,
     shouldDisplayQuestion: false,
-    //shouldDisplayChapter:true
+
   },
 };
 
@@ -304,44 +304,5 @@ console.log("QuestionSortie : ", state.counter.questionCounter);
 return state.counter;*/
 
 
-
-
-
-//test for ending --not good yet
-  /*if (state.counter.chapterCounter !=19) {
-    state.counter.shouldDisplayChapter = true;
-    if (state.counter.storyCounter < state.storytelling.length) {
-      //alert("story incrementation")
-      state.counter.storyCounter++;
-      state.counter.shouldDisplayQuestion = false;
-      // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
-    } else if ((state.counter.storyCounter === state.storytelling.length) && (state.question.length) && !state.counter.shouldDisplayQuestion) {
-      state.counter.shouldDisplayQuestion = true
-    }
-  
-    else if (state.counter.questionCounter < state.question.length) {
-      //alert("question incrementation")
-      state.counter.questionCounter++;
-      //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
-    } else if (state.counter.questionCounter === state.question.length ||
-      (state.question.length === 0 && state.counter.storyCounter === state.storytelling.length)) {
-      state.counter.shouldDisplayQuestion = false;
-  
-      //alert("chapter incrementation")
-      state.counter.chapterCounter++;
-      state.counter.situationCounter++;
-      state.counter.questionCounter = 1;
-      state.counter.storyCounter = 1;
-    }
-  
-    console.log("chapterSortie : ", state.counter.chapterCounter);
-    console.log("storySortie : ", state.counter.storyCounter);
-    console.log("QuestionSortie : ", state.counter.questionCounter);
-    return state.counter;
-
-  }else{
-    state.counter.shouldDisplayChapter = false; 
-    return state.counter;
-  }*/
 
   
