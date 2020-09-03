@@ -32,7 +32,7 @@ const nextMiddleware = (store) => (next) => (action) => {
 
                 axios({
                   method: 'get',
-                  url: `http://localhost:3001/play/character/${chapterId}`
+                  url: `http://localhost:3001/play/character/${situationId}`
                 })
                   .then((res) => {
                     const characters = res.data;

@@ -10,6 +10,8 @@ import {
   GET_CHAPTER_SUCCESS,
   GET_CHAPTER_ERROR,
   GET_NEXT,
+  GET_CHARACTER_SUCCESS,
+  GET_CHARACTER_ERROR,
   GET_STORYTELLING_SUCCESS,
   GET_STORYTELLING_ERROR,
   OPEN_MENU,
@@ -34,12 +36,7 @@ const initialState = {
 
   character: [
     {
-      id: "",
-      name: "jules",
-      picture: "",
-      is_guilty: "",
-      is_suspect: "",
-      alibi: "",
+       id:""
     },
   ],
   hide: false,
@@ -97,7 +94,7 @@ export default (state = initialState, action = {}) => {
       };
     case GET_CHAPTER_SUCCESS:
       //console.log("reducer:", action.payload[0]);
-      const payload = action.payload[0];
+      let payload = action.payload[0];
       return {
         ...state,
         open: false,
@@ -138,6 +135,22 @@ export default (state = initialState, action = {}) => {
           ...setCompter(state)
         },
       };
+
+    case GET_CHARACTER_SUCCESS:
+      const payload2 = action.payload[0];
+      console.log("toto : ", action.payload);
+      return {
+        ...state,
+        character: {
+          characterId: payload2["character.id"],
+          characterName: payload2["character.name"],
+          characterPicture: payload2["character.picture"],
+        },
+      };
+    case GET_CHARACTER_ERROR:
+    return {
+      ...state,
+    };
 
     case GET_QUESTION_SUCCESS:
       return {
@@ -231,16 +244,16 @@ let setCompter = (oldState) => {
   const state = { ...oldState };
   console.log("question : ", state.question);
   console.log(state.counter);
+  console.log("character : ", state.character)
 
   if (state.counter.storyCounter < state.storytelling.length) {
     //alert("story incrementation")
     state.counter.storyCounter++;
     state.counter.shouldDisplayQuestion = false;
     // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
-  } else if ((state.counter.storyCounter === state.storytelling.length) && (state.character.length) && !state.counter.shouldDisplayQuestion) {
+  } else if ((state.counter.storyCounter === state.storytelling.length) && (state.question.length) && !state.counter.shouldDisplayQuestion) {
     state.counter.shouldDisplayQuestion = true
   }
-
   else if (state.counter.characterCounter < state.character.length) { 
     state.counter.characterCounter++;
     
@@ -259,11 +272,19 @@ let setCompter = (oldState) => {
       state.counter.storyCounter = 1;
       state.counter.characterCounter = 1;
     }
+  }else{
+    state.counter.shouldDisplayQuestion = false;
+    state.counter.chapterCounter++;
+    state.counter.situationCounter++;
+    state.counter.questionCounter = 1;
+    state.counter.storyCounter = 1;
+    state.counter.characterCounter = 1;
   };
    
   console.log("chapterSortie : ", state.counter.chapterCounter);
   console.log("storySortie : ", state.counter.storyCounter);
   console.log("QuestionSortie : ", state.counter.questionCounter);
+  console.log("Characterortie : ", state.counter.characterCounter);
   return state.counter;
 };
 

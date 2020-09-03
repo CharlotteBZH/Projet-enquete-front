@@ -22,7 +22,9 @@ const Game = ({
   storytelling,
   onClickNext,
   question,
+  character,
   questionCounter,
+  characterCounter,
   storyCounter,
   open,
   onOpenMenu,
@@ -33,6 +35,7 @@ const Game = ({
   shouldDisplayQuestion,
   shouldDisplayChapter
 }) => {
+  //console.log("character : ",character.name)
   return (
     <div className="game">
 
@@ -55,12 +58,14 @@ const Game = ({
           <Alias />
         </div>
       </div>
-      <Tag placeName={place.placeName} />
+      {shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} character={character.characterName} />)}
+      {!shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} placeName={place.placeName} />)}
       <Headband
         storytelling={storytelling[storyCounter - 1]}
         next={onClickNext}
         isLast={storyCounter === storytelling.length - 1}
         question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
+        character={character[characterCounter - 1]}
         questionCounter={questionCounter}
         storyCounter={storyCounter}
         toggleQuestionResponse={onToggleQuestion}
@@ -73,11 +78,12 @@ const Game = ({
 
 export default Game;
 
-const Tag = ({ placeName }) => {
+const Tag = ({ placeName, character, shouldDisplayQuestion }) => {
 
   return (
     <div className="tag">
-      <h2>{placeName}</h2>
+      {shouldDisplayQuestion && (<h2>{character}</h2>)}
+      {!shouldDisplayQuestion && (<h2>{placeName}</h2>)}
     </div>
   );
 };
@@ -86,17 +92,17 @@ const Headband = ({
   storytelling,
   next,
   question,
+  character,
   toggleQuestionResponse,
   hide,
   shouldDisplayQuestion
 }) => {
-  // Si shouldDisplayQuestion
-  // Afficher <Selection />
-  // Sinon Afficher <Text />
+
   return (
     <div className="headband">
       {shouldDisplayQuestion && (
-        <div className="headband">
+        <div className="contexte">
+          <img src={character.characterPicture} alt={character.characterName}/>
           <Selection
             question={question}
             toggleQuestionResponse={toggleQuestionResponse}
@@ -106,7 +112,7 @@ const Headband = ({
         </div>
       )}
       {!shouldDisplayQuestion && (
-        <div className="headband">
+        <div className="interrogatoire">
           {<Text sentence={storytelling.sentence} />}
           <ButtonNext next={next} />
         </div>
@@ -115,10 +121,8 @@ const Headband = ({
   )
 };
 
-//exemple si ça fonctionnait de comment recup info character
-//il faudrait aussi include le tag au headBand ou l'entourer par la vérif de shouldDisplayQuestion
-/*
-return (
+
+/*return (
     <div className="headband">
       {shouldDisplayQuestion && (
         <div className="headband">
@@ -132,7 +136,6 @@ return (
       )}
       {!shouldDisplayQuestion && (
         <div className="headband">
-          <img src={character.picture} alt={character.name}/>
           {<Text sentence={storytelling.sentence} />}
           <ButtonNext next={next} />
         </div>

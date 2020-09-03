@@ -10,6 +10,7 @@ const mapState = (state) => ({
   character: state.character,
   storyCounter: state.counter.storyCounter,
   questionCounter: state.counter.questionCounter,
+  characterCounter: state.counter.characterCounter,
   open: state.open,
   mute: state.mute,
   shouldDisplayQuestion: state.counter.shouldDisplayQuestion,
