@@ -236,7 +236,7 @@ let setCompter = (oldState) => {
   const state = { ...oldState };
   console.log("question : ", state.question);
   console.log(state.counter);
-  if (state.counter.chapterCounter !=19) {
+  if (state.counter.chapterCounter !==18) {
     state.counter.shouldDisplayChapter = true;
     if (state.counter.storyCounter < state.storytelling.length) {
       //alert("story incrementation")

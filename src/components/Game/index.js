@@ -14,7 +14,7 @@ import soundfile from "../../audio/game_boucle.mp3";
 
 import Menu from "../Menu";
 import Alias from "../../containers/Alias";
-
+import End from "../End";
 
 
 const Game = ({
@@ -30,7 +30,8 @@ const Game = ({
   hide,
   mute,
   onClickMute,
-  shouldDisplayQuestion
+  shouldDisplayQuestion,
+  shouldDisplayChapter
 }) => {
   return (
     <div className="game">
@@ -71,7 +72,9 @@ const Game = ({
       </div>
       }
       {!shouldDisplayChapter && <End />}
-      );
+    </div>
+  );
+
 };
 
 export default Game;
