@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.scss";
 
-import Menu from "../Menu";
+import Menu from "../../containers/Menu";
 
 const Connexion = ({
   // data qui vient du state

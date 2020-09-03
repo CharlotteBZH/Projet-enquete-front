@@ -15,6 +15,8 @@
     &-form{
         display: flex;
         flex-direction: column;
+        width: 50%;
+        margin: auto;
 
         input{
             line-height: 2.5rem;
