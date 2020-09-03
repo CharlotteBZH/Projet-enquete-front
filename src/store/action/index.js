@@ -25,14 +25,13 @@ export const GET_NEXT = 'GET_NEXT';
 export const GET_QUESTION_SUCCESS = 'GET_QUESTION_SUCCESS';
 export const GET_QUESTION_ERROR = 'GET_QUESTION_ERROR';
 
+export const GET_CHARACTER_SUCCESS = 'GET_CHARACTER_SUCCESS';
+export const GET_CHARACTER_ERROR = 'GET_CHARACTER_ERROR';
+
 
 export const OPEN_MENU = 'OPEN_MENU';
 
 export const TOGGLE_QUESTION_RESPONSE = 'TOGGLE_QUESTION_RESPONSE';
-
-
-
-
 
 
 export const ON_MUTE = 'ON_MUTE';
@@ -45,6 +44,17 @@ export const onMute = () => ({
 
 export const toggleQuestionResponse = () => ({
   type: TOGGLE_QUESTION_RESPONSE,
+});
+
+
+export const getCharacterSuccess = (payload) => ({
+  type: GET_CHARACTER_SUCCESS,
+  payload
+});
+
+export const getCharacterError = (payload) => ({
+  type: GET_CHARACTER_ERROR,
+  payload
 });
 
 

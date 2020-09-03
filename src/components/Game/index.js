@@ -14,7 +14,7 @@ import soundfile from "../../audio/game_boucle.mp3";
 
 import Menu from "../Menu";
 import Alias from "../../containers/Alias";
-
+import End from "../End";
 
 
 const Game = ({
@@ -30,7 +30,8 @@ const Game = ({
   hide,
   mute,
   onClickMute,
-  shouldDisplayQuestion
+  shouldDisplayQuestion,
+  shouldDisplayChapter
 }) => {
   return (
     <div className="game">
@@ -54,7 +55,6 @@ const Game = ({
           <Alias />
         </div>
       </div>
-
       <Tag placeName={place.placeName} />
       <Headband
         storytelling={storytelling[storyCounter - 1]}
@@ -70,6 +70,25 @@ const Game = ({
     </div>
   );
 };
+
+
+/*{shouldDisplayChapter && 
+  <div>
+    {<Tag placeName={place.placeName} />}
+    {<Headband
+      storytelling={storytelling[storyCounter - 1]}
+      next={onClickNext}
+      isLast={storyCounter === storytelling.length - 1}
+      question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
+      questionCounter={questionCounter}
+      storyCounter={storyCounter}
+      toggleQuestionResponse={onToggleQuestion}
+      hide={hide}
+      shouldDisplayQuestion={shouldDisplayQuestion}
+    />}
+  </div>
+  }
+  {!shouldDisplayChapter && <End />}*/
 
 export default Game;
 
@@ -90,12 +109,6 @@ const Headband = ({
   hide,
   shouldDisplayQuestion
 }) => {
-  //console.log("in headband", storytelling);
-  //console.log("questionCounter :",questionCounter);
-  //console.log("storyCounter : ",storyCounter)
-  // Soit il y a des questions à la fin
-  // afficher storytelling.sentence tant qu'il y en a
-
   // Si shouldDisplayQuestion
   // Afficher <Selection />
   // Sinon Afficher <Text />

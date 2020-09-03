@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_NEXT, getChapterSuccess, getChapterError, getStorytellingSuccess, getStorytellingError, getQuestionSuccess, getQuestionError } from '../action';
+import { GET_NEXT, getCharacterSuccess, getCharacterError, getChapterSuccess, getChapterError, getStorytellingSuccess, getStorytellingError, getQuestionSuccess, getQuestionError } from '../action';
 
 const nextMiddleware = (store) => (next) => (action) => {
 
@@ -12,9 +12,6 @@ const nextMiddleware = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case GET_NEXT:
-      console.log("chapter", chapterId);
-      console.log(storyCounter, storyLength)
-      console.log('second time', storyCounter, storyLength)
 
       if(!store.getState().counter.shouldDisplayQuestion && (storyCounter === storyLength)){
         axios({
@@ -32,22 +29,34 @@ const nextMiddleware = (store) => (next) => (action) => {
               .then((res) => {
                 // store.dispatch(getStorytellingSuccess(res.data));
                 const story = res.data;
-              
+
                 axios({
                   method: 'get',
-                  url: `http://localhost:3001/play/question/${situationId}`
+                  url: `http://localhost:3001/play/character/${chapterId}`
                 })
                   .then((res) => {
-                    const questions = res.data;
-  
-                    store.dispatch(getQuestionSuccess(questions));
-                    store.dispatch(getStorytellingSuccess(story));
-                    store.dispatch(getChapterSuccess(chapter));
+                    const characters = res.data;
+              
+                      axios({
+                        method: 'get',
+                        url: `http://localhost:3001/play/question/${situationId}`
+                      })
+                        .then((res) => {
+                          const questions = res.data;
+        
+                          store.dispatch(getQuestionSuccess(questions));
+                          store.dispatch(getCharacterSuccess(characters));
+                          store.dispatch(getStorytellingSuccess(story));
+                          store.dispatch(getChapterSuccess(chapter));
+                        })
+                        .catch((err) => {
+                          store.dispatch(getQuestionError('Impossible de récupérer les questions...'))
+                        })
                   })
                   .catch((err) => {
-                    store.dispatch(getQuestionError('Impossible de récupérer les questions...'))
+                    store.dispatch(getCharacterError('Impossible de récupérer les characters...'))
                   })
-              
+                    
               })
               .catch((err) => {
                 store.dispatch(getStorytellingError('Impossible de récupérer les story...'))
