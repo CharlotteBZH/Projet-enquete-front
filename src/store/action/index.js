@@ -28,9 +28,24 @@ export const GET_QUESTION_ERROR = 'GET_QUESTION_ERROR';
 
 export const OPEN_MENU = 'OPEN_MENU';
 
+export const TOGGLE_QUESTION_RESPONSE = 'TOGGLE_QUESTION_RESPONSE';
 
 
 
+
+
+
+export const ON_MUTE = 'ON_MUTE';
+
+
+export const onMute = () => ({
+  type: ON_MUTE,
+});
+
+
+export const toggleQuestionResponse = () => ({
+  type: TOGGLE_QUESTION_RESPONSE,
+});
 
 
 export const getStorytellingSuccess = (payload) => ({

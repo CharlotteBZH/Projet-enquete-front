@@ -2,18 +2,37 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
 import Menu from "../Menu";
-import Alias from '../../containers/Alias';
-//import Log from "../../containers/Log";
-//import PropTypes from "prop-types";
 
-const Home = ({ isLogged, onClickPlay, onOpenMenu, open }) => {
+
+import soundfile from "../../audio/startGame.mp3";
+import Alias from '../../containers/Alias';
+import PropTypes from "prop-types";
+
+const Home = ({
+  isLogged,
+  connected,
+  onClickPlay,
+  onOpenMenu,
+  open,
+  mute,
+  onClickMute,
+}) => {
   return (
     <div className="home">
+      <div>
+        {mute === false && <iframe title="music" src={soundfile} allow="autoplay"></iframe>}
+        {mute === true && <iframe title="mute"></iframe>}
+      </div>
       <div className="header">
         <div className="menuButton">
-          <Menu menu={onOpenMenu} open={open} />
+          <Menu
+            menu={onOpenMenu}
+            open={open}
+            mute={mute}
+            onClickMute={onClickMute}
+          />
         </div>
-        <div className="toAlias">
+        <div className="toLog">
           <Alias />
         </div>
       </div>
@@ -29,7 +48,6 @@ const Home = ({ isLogged, onClickPlay, onOpenMenu, open }) => {
               Jouer
         </button>
           </div>
-
         </Link>
       )}
       {!isLogged && (

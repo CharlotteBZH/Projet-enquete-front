@@ -10,8 +10,11 @@ import "./selection.scss";
 import "./tag.scss";
 import PropTypes from "prop-types";
 
+import soundfile from "../../audio/game_boucle.mp3";
+
 import Menu from "../Menu";
 import Alias from "../../containers/Alias";
+
 
 
 const Game = ({
@@ -22,33 +25,47 @@ const Game = ({
   questionCounter,
   storyCounter,
   open,
-  onOpenMenu
+  onOpenMenu,
+  onToggleQuestion,
+  hide,
+  mute,
+  onClickMute,
+  shouldDisplayQuestion
 }) => {
-  // il faudra faire une variable compteur qui viendra remplacer
-  // le [0] dans le headband
-  //console.log("questionAffichage : ", questionCounter);
-  console.log(
-    "------------------------------------------------------------------------"
-  );
-
   return (
     <div className="game">
+
+      <div>
+        {mute === false && <iframe title="music" src={soundfile} allow="autoplay"></iframe>}
+        {mute === true && <iframe title="mute"></iframe>}
+      </div>
+      <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
+
       <div className="header">
         <div className="menuButton">
-          <Menu menu={onOpenMenu} open={open} />
+          <Menu
+            menu={onOpenMenu}
+            open={open}
+            mute={mute}
+            onClickMute={onClickMute}
+          />
         </div>
-        <div >
+        <div className="toLog">
           <Alias />
         </div>
       </div>
-      <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
-      <Tag place={place.placeName} />
+
+      <Tag placeName={place.placeName} />
       <Headband
-        storytelling={storytelling[0]}
+        storytelling={storytelling[storyCounter - 1]}
         next={onClickNext}
+        isLast={storyCounter === storytelling.length - 1}
         question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
         questionCounter={questionCounter}
         storyCounter={storyCounter}
+        toggleQuestionResponse={onToggleQuestion}
+        hide={hide}
+        shouldDisplayQuestion={shouldDisplayQuestion}
       />
     </div>
   );
@@ -56,11 +73,11 @@ const Game = ({
 
 export default Game;
 
-const Tag = ({ place }) => {
+const Tag = ({ placeName }) => {
 
   return (
     <div className="tag">
-      <h2>{place}</h2>
+      <h2>{placeName}</h2>
     </div>
   );
 };
@@ -69,33 +86,39 @@ const Headband = ({
   storytelling,
   next,
   question,
-  storyCounter,
-  questionCounter,
+  toggleQuestionResponse,
+  hide,
+  shouldDisplayQuestion
 }) => {
   //console.log("in headband", storytelling);
   //console.log("questionCounter :",questionCounter);
   //console.log("storyCounter : ",storyCounter)
-  return storyCounter === 1 ? (
+  // Soit il y a des questions à la fin
+  // afficher storytelling.sentence tant qu'il y en a
+
+  // Si shouldDisplayQuestion
+  // Afficher <Selection />
+  // Sinon Afficher <Text />
+  return (
     <div className="headband">
-      {<Text sentence={storytelling.sentence} />}
-      <ButtonNext next={next} />
-    </div>
-  ) : typeof question !== "undefined" ? (
-    <div className="headband">
-      <Selection question={question.description} />
-      <Selection question={question.answer} />
-      <ButtonNext next={next} />
-    </div>
-  ) : (
-        /*Là il faudrait "simuler" un clic sur NEXT pour sauter les chapitres/situations sans questions
-            Peut être regarder du côté des REF => pas compris comment s'en servir
-            Et virer le div en dessous :)
-            */
+      {shouldDisplayQuestion && (
         <div className="headband">
-          <Selection question="Pas de question" />
+          <Selection
+            question={question}
+            toggleQuestionResponse={toggleQuestionResponse}
+            hide={hide}
+          />
           <ButtonNext next={next} />
         </div>
-      );
+      )}
+      {!shouldDisplayQuestion && (
+        <div className="headband">
+          {<Text sentence={storytelling.sentence} />}
+          <ButtonNext next={next} />
+        </div>
+      )}
+    </div>
+  )
 };
 
 const Text = ({ sentence }) => {
@@ -106,10 +129,16 @@ const Text = ({ sentence }) => {
   );
 };
 
-const Selection = ({ question }) => {
+const Selection = ({ question, toggleQuestionResponse, hide }) => {
+  const cssClassName = hide ? " toggler toggler_close" : "toggler_open";
+  console.log("question :", question.description);
+  console.log("response :", question.answer);
   return (
     <div className="selection">
-      <p className="selection_para">{question}</p>
+      <p className={cssClassName} onClick={toggleQuestionResponse}>
+        {question.description}
+      </p>
+      {hide === false && <p>{question.answer}</p>}
     </div>
   );
 };
