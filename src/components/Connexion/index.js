@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.scss";
 
-import Menu from "../../containers/Menu";
+import Menu from "../Menu";
 
 const Connexion = ({
   // data qui vient du state
@@ -10,6 +10,10 @@ const Connexion = ({
   pwd,
   pseudo,
   isLogged,
+  onOpenMenu,
+  open,
+  mute,
+  onClickMute,
   // function qui dispatch
   onInputChange,
   onFormLogin,
@@ -28,7 +32,17 @@ const Connexion = ({
 
   return (
     <div className="connexion">
-      <Menu />
+      <div className="header">
+        <div className="header-menu">
+          <Menu
+            menu={onOpenMenu}
+            open={open}
+            mute={mute}
+            onClickMute={onClickMute}
+          />
+        </div>
+      </div>
+
       <h1>Se connecter</h1>
 
       <form className="connexion-form" onSubmit={handleSubmit}>

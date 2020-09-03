@@ -20,10 +20,10 @@ const Home = ({
 }) => {
   return (
     <div className="home">
-      {/*<div>
+      <div>
         {mute === false && <iframe title="music" src={soundfile} allow="autoplay"></iframe>}
         {mute === true && <iframe title="mute"></iframe>}
-      </div>*/}
+      </div>
       <div className="header">
         <div className="header-menu">
           <Menu
