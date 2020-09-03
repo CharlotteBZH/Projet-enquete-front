@@ -38,7 +38,7 @@ const Game = ({
           <Menu menu={onOpenMenu} open={open} />
         </div>
         <div >
-
+          <Alias />
         </div>
       </div>
       <img className="picturesBack" src={place.placePicture} />
