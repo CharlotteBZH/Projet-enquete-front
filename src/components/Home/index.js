@@ -4,7 +4,8 @@ import "./style.scss";
 import Menu from "../Menu";
 import Alias from '../../containers/Alias';
 //import Log from "../../containers/Log";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
+
 const Home = ({ isLogged, onClickPlay, onOpenMenu, open }) => {
   return (
     <div className="home">
@@ -12,7 +13,8 @@ const Home = ({ isLogged, onClickPlay, onOpenMenu, open }) => {
         <div className="menuButton">
           <Menu menu={onOpenMenu} open={open} />
         </div>
-        <div >
+        <div className="toAlias">
+          <Alias />
         </div>
       </div>
       <span className="title-game">
@@ -22,23 +24,24 @@ const Home = ({ isLogged, onClickPlay, onOpenMenu, open }) => {
       </span>
       {isLogged && (
         <Link to={`/play`}>
-          <button className="play" type="button" onClick={onClickPlay}>
-            Jouer
+          <div className="start">
+            <button className="playButtonClick" type="button" onClick={onClickPlay}>
+              Jouer
         </button>
+          </div>
+
         </Link>
       )}
       {!isLogged && (
-        <button disabled className="play-disabled" type="button" onClick={onClickPlay}>
-          Jouer
+        <div className="start">
+          <button disabled className="playButtonClick" type="button" onClick={onClickPlay}>
+            Jouer
         </button>
+        </div>
       )}
-      <div className="toAlias">
-        <Alias />
-      </div>
+
     </div>
   );
 };
-Home.propTypes = {
-  connected: PropTypes.bool.isRequired,
-};
+
 export default Home;

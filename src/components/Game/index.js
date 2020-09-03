@@ -41,8 +41,8 @@ const Game = ({
           <Alias />
         </div>
       </div>
-      <img className="picturesBack" src={place.placePicture} />
-      <Tag place={place} />
+      <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
+      <Tag place={place.placeName} />
       <Headband
         storytelling={storytelling[0]}
         next={onClickNext}
@@ -57,10 +57,10 @@ const Game = ({
 export default Game;
 
 const Tag = ({ place }) => {
-  console.log("place :", place);
+
   return (
     <div className="tag">
-      <h2>{place.placeName}</h2>
+      <h2>{place}</h2>
     </div>
   );
 };
@@ -124,14 +124,4 @@ const ButtonNext = ({ next }) => {
   );
 };
 
-Tag.propTypes = {
-  tagName: PropTypes.string.isRequired,
-};
 
-Text.propTypes = {
-  narration: PropTypes.string.isRequired,
-};
-
-Selection.propTypes = {
-  question: PropTypes.string.isRequired,
-};

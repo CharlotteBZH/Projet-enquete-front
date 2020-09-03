@@ -2,7 +2,6 @@ import axios from 'axios';
 import {
     REGISTRATION_SUBMIT,
     registrationSuccess,
-    RegistrationError,
     LOGIN_SUBMIT,
     LOGOUT, logoutSuccess,
     loginSuccess,
