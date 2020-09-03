@@ -54,21 +54,24 @@ const Game = ({
           <Alias />
         </div>
       </div>
-
-      <Tag placeName={place.placeName} />
-      <Headband
-        storytelling={storytelling[storyCounter - 1]}
-        next={onClickNext}
-        isLast={storyCounter === storytelling.length - 1}
-        question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
-        questionCounter={questionCounter}
-        storyCounter={storyCounter}
-        toggleQuestionResponse={onToggleQuestion}
-        hide={hide}
-        shouldDisplayQuestion={shouldDisplayQuestion}
-      />
-    </div>
-  );
+      {shouldDisplayChapter && 
+      <div>
+        {<Tag placeName={place.placeName} />}
+        {<Headband
+          storytelling={storytelling[storyCounter - 1]}
+          next={onClickNext}
+          isLast={storyCounter === storytelling.length - 1}
+          question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
+          questionCounter={questionCounter}
+          storyCounter={storyCounter}
+          toggleQuestionResponse={onToggleQuestion}
+          hide={hide}
+          shouldDisplayQuestion={shouldDisplayQuestion}
+        />}
+      </div>
+      }
+      {!shouldDisplayChapter && <End />}
+      );
 };
 
 export default Game;
