@@ -14,7 +14,7 @@ const End = ({
   return (
 
     <div className="end">
-      <div>
+      {/*<div>
         {mute === false && <iframe title="music" src={soundfile} allow="autoplay"></iframe>}
         {mute === true && <iframe title="mute"></iframe>}
       </div>
@@ -32,7 +32,7 @@ const End = ({
 
       <div className="toLog">
         <Alias />
-      </div>
+      </div>*/}
 
       <div className="resolution">
         <p className="para1">

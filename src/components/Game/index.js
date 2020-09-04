@@ -68,22 +68,24 @@ const Game = ({
           <Alias />
         </div>
       </div>
-
-      {shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} character={characterToDisplay['character.name']} />)}
-      {!shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} placeName={place.placeName} />)}
-      <Headband
-        storytelling={storytelling[storyCounter - 1]}
-        next={onClickNext}
-        isLast={storyCounter === storytelling.length - 1}
-        question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
-        character={character[characterCounter - 1]}
-        questionCounter={questionCounter}
-        storyCounter={storyCounter}
-        toggleQuestionResponse={onToggleQuestion}
-        hide={hide}
-        shouldDisplayQuestion={shouldDisplayQuestion}
-      />
-
+      {shouldDisplayChapter &&
+        <div>
+          {shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} character={characterToDisplay['character.name']} />)}
+          {!shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} placeName={place.placeName} />)}
+          <Headband
+            storytelling={storytelling[storyCounter - 1]}
+            next={onClickNext}
+            isLast={storyCounter === storytelling.length - 1}
+            question={question[questionCounter - 1]} //pour s'adapter à l'index du tableau
+            character={character[characterCounter - 1]}
+            questionCounter={questionCounter}
+            storyCounter={storyCounter}
+            toggleQuestionResponse={onToggleQuestion}
+            hide={hide}
+            shouldDisplayQuestion={shouldDisplayQuestion}
+          />
+        </div>
+      }
       {!shouldDisplayChapter && <End />}
     </div>
   );
