@@ -35,7 +35,15 @@ const Game = ({
   shouldDisplayQuestion,
   shouldDisplayChapter
 }) => {
-  //console.log("character : ",character.name)
+  //console.log("character : ",character[].name)
+  console.log('character', character);
+  let characterToDisplay = {};
+  if(shouldDisplayQuestion){
+    characterToDisplay = character.find((char) => {
+      return char['character.id'] === question[questionCounter - 1].character_id;
+    })
+    console.log(characterToDisplay)
+  }
   return (
     <div className="game">
 
@@ -44,7 +52,7 @@ const Game = ({
         {mute === true && <iframe title="mute"></iframe>}
       </div>
       <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
-
+      { shouldDisplayQuestion && <img src={characterToDisplay['character.picture']} alt={characterToDisplay['character.name']} /> }
       <div className="header">
         <div className="menuButton">
           <Menu
@@ -58,7 +66,7 @@ const Game = ({
           <Alias />
         </div>
       </div>
-      {shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} character={character.characterName} />)}
+      {shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} character={characterToDisplay['character.name']} />)}
       {!shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} placeName={place.placeName} />)}
       <Headband
         storytelling={storytelling[storyCounter - 1]}
@@ -79,7 +87,7 @@ const Game = ({
 export default Game;
 
 const Tag = ({ placeName, character, shouldDisplayQuestion }) => {
-
+  console.log(character)
   return (
     <div className="tag">
       {shouldDisplayQuestion && (<h2>{character}</h2>)}
@@ -102,7 +110,7 @@ const Headband = ({
     <div className="headband">
       {shouldDisplayQuestion && (
         <div className="contexte">
-          <img src={character.characterPicture} alt={character.characterName}/>
+          {/* <img src={character.characterPicture} alt={character.characterName}/> */}
           <Selection
             question={question}
             toggleQuestionResponse={toggleQuestionResponse}

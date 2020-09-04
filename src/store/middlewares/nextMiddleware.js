@@ -50,6 +50,7 @@ const nextMiddleware = (store) => (next) => (action) => {
                           store.dispatch(getChapterSuccess(chapter));
                         })
                         .catch((err) => {
+                          console.log(err)
                           store.dispatch(getQuestionError('Impossible de récupérer les questions...'))
                         })
                   })

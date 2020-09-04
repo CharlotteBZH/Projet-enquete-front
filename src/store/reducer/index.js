@@ -30,7 +30,9 @@ const initialState = {
     checkMail: "",
     pwd: '',
     checkPwd: "",
-    isLogged: false,
+    isLogged: true,
+    //isLogged: false,
+
     error: ''
   },
 
@@ -58,7 +60,8 @@ const initialState = {
     storyCounter: 1,
     questionCounter: 1,
     situationCounter: 1,
-    characterCounter : 1,
+    characterCounter: 1,
+
     shouldDisplayQuestion: false,
 
   },
@@ -133,20 +136,17 @@ export default (state = initialState, action = {}) => {
       };
 
     case GET_CHARACTER_SUCCESS:
-      const payload2 = action.payload[0];
       console.log("toto : ", action.payload);
       return {
         ...state,
-        character: {
-          characterId: payload2["character.id"],
-          characterName: payload2["character.name"],
-          characterPicture: payload2["character.picture"],
-        },
+        character: [
+          ...action.payload
+        ],
       };
     case GET_CHARACTER_ERROR:
-    return {
-      ...state,
-    };
+      return {
+        ...state,
+      };
 
     case GET_QUESTION_SUCCESS:
       return {
@@ -238,92 +238,37 @@ export default (state = initialState, action = {}) => {
 
 let setCompter = (oldState) => {
   const state = { ...oldState };
-  console.log("question : ", state.question);
-  console.log("state.counter : ",state.counter);
-  console.log("character : ", state.character);
+  console.log("question : ", state.question)
 
   if (state.counter.storyCounter < state.storytelling.length) {
-    console.log("story incrementation");
+    //alert("story incrementation")
     state.counter.storyCounter++;
     state.counter.shouldDisplayQuestion = false;
     // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
-  } else if ((state.counter.storyCounter === state.storytelling.length) && (state.character.length)) {
+  } else if ((state.counter.storyCounter === state.storytelling.length) && (state.question.length) && !state.counter.shouldDisplayQuestion) {
     state.counter.shouldDisplayQuestion = true
-    if (state.counter.characterCounter < state.character.length) { 
-      console.log("coucou");
-      state.counter.shouldDisplayQuestion = true
-      //state.counter.characterCounter++;
-      
-      if(state.counter.questionCounter < state.question.length) {
-          console.log("question incrementation");
-        state.counter.questionCounter++;
-        //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
-        } else if (state.counter.questionCounter === state.question.length ||
-        (state.question.length === 0 && state.counter.characterCounter === state.character.length)) {
-          state.counter.shouldDisplayQuestion = false;
+  }
 
-          console.log("character incrementation");
-          state.counter.chapterCounter++;
-          state.counter.situationCounter++;
-          state.counter.questionCounter = 1;
-          state.counter.storyCounter = 1;
-          state.counter.characterCounter++;
-        }
-      }
-    }
-  else{
-    console.log("plus de story et pas de character");
+  else if (state.counter.questionCounter < state.question.length) {
+    //alert("question incrementation")
+    state.counter.questionCounter++;
+    //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
+  } else if (state.counter.questionCounter === state.question.length ||
+    (state.question.length === 0 && state.counter.storyCounter === state.storytelling.length)) {
     state.counter.shouldDisplayQuestion = false;
+
+    //alert("chapter incrementation")
     state.counter.chapterCounter++;
     state.counter.situationCounter++;
     state.counter.questionCounter = 1;
     state.counter.storyCounter = 1;
-    state.counter.characterCounter = 1;
-  };
-   
+  }
+
   console.log("chapterSortie : ", state.counter.chapterCounter);
   console.log("storySortie : ", state.counter.storyCounter);
   console.log("QuestionSortie : ", state.counter.questionCounter);
-  console.log("Characterortie : ", state.counter.characterCounter);
   return state.counter;
-};
 
-
-
-
-
-
-//the good one
-
-/*if (state.counter.storyCounter < state.storytelling.length) {
-  //alert("story incrementation")
-  state.counter.storyCounter++;
-  state.counter.shouldDisplayQuestion = false;
-  // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
-} else if ((state.counter.storyCounter === state.storytelling.length) && (state.question.length) && !state.counter.shouldDisplayQuestion) {
-  state.counter.shouldDisplayQuestion = true
 }
 
-else if (state.counter.questionCounter < state.question.length) {
-  //alert("question incrementation")
-  state.counter.questionCounter++;
-  //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
-} else if (state.counter.questionCounter === state.question.length ||
-  (state.question.length === 0 && state.counter.storyCounter === state.storytelling.length)) {
-  state.counter.shouldDisplayQuestion = false;
 
-  //alert("chapter incrementation")
-  state.counter.chapterCounter++;
-  state.counter.situationCounter++;
-  state.counter.questionCounter = 1;
-  state.counter.storyCounter = 1;
-}
-
-console.log("chapterSortie : ", state.counter.chapterCounter);
-console.log("storySortie : ", state.counter.storyCounter);
-console.log("QuestionSortie : ", state.counter.questionCounter);
-return state.counter;*/
-
-
-
-  
