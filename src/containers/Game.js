@@ -29,7 +29,7 @@ const mapDispatch = (dispatch) => ({
   },
   onClickMute: () => {
     dispatch(onMute());
-},
+  },
 });
 
 export default connect(mapState, mapDispatch)(Game);
