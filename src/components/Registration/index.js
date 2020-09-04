@@ -14,6 +14,11 @@ const Registration = ({
   // function qui dispatch
   onInputChange,
   onFormRegistration,
+  // data + function Menu
+  onOpenMenu,
+  open,
+  mute,
+  onClickMute,
 }) => {
 
   const handleSubmit = (evt) => {
@@ -29,7 +34,17 @@ const Registration = ({
   };
   return (
     <div className="registration">
-      <Menu />
+       <div className="header">
+        <div className="header-menu">
+          <Menu
+            menu={onOpenMenu}
+            open={open}
+            mute={mute}
+            onClickMute={onClickMute}
+          />
+        </div>
+    </div>
+
       <h1>Formulaire d'inscription</h1>
 
       <form

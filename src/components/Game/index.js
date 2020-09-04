@@ -106,7 +106,7 @@ const Headband = ({
   // Afficher <Selection />
   // Sinon Afficher <Text />
   return (
-    <div className="headband">
+    <div className="headbandAll">
       {shouldDisplayQuestion && (
         <div className="headband">
           <Selection
@@ -114,7 +114,7 @@ const Headband = ({
             toggleQuestionResponse={toggleQuestionResponse}
             hide={hide}
           />
-          <ButtonNext next={next} />
+          <ButtonNext next={next} hide={hide} />
         </div>
       )}
       {!shouldDisplayQuestion && (
@@ -149,10 +149,11 @@ const Selection = ({ question, toggleQuestionResponse, hide }) => {
   );
 };
 
-const ButtonNext = ({ next }) => {
+const ButtonNext = ({ next, hide }) => {
+  const cssClassName = hide ? " buttonNext buttonNext_close" : "buttonNext_open";
   return (
     <Link to={`/play`}>
-      <div className="buttonNext" type="button" onClick={next}>
+      <div className={cssClassName} type="button" onClick={next}>
         <Icon circular inverted color="grey" name="play" size="big" />
       </div>
     </Link>

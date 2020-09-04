@@ -1,7 +1,18 @@
-.tag {
-    display: flex;
-    align-items: flex-end;
+.alias{
+    margin-left: 1rem;
+
+    &-content{
+        &__inscription, &__connexion{
+            color: #000;
+
+        }
+
+        &__inscription:hover, &__connexion:hover{
+            color: #B29878;
+        }
+    }
 }
+
 .alias .userLogo {
     margin: 1rem;
 }

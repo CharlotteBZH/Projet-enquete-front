@@ -1,49 +1,48 @@
+.registration {
+  // width : 40vw;
+  // margin: auto;
+  background-image: url(../../img/photoplage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 
+  h1 {
+    font-size: 2rem;
+    line-height: 3;
+    text-align: center;
+  }
 
-.registration{
-    // width : 40vw;
-    // margin: auto;
-    background-image: url(../../img/photoplage.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+  &-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
 
-    h1{
-        font-size: 2rem;
-        line-height: 3;
-        text-align: center;
+    input {
+      line-height: 2.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      padding-left: 1rem;
     }
 
-    &-form{
-        display: flex;
-        flex-direction: column;
-
-        input{
-            line-height: 2.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            padding-left: 1rem;
-        }
-
-        &__submit{
-            background-color: lightsalmon;
-            width: 40%;
-            margin: auto;
-            margin-top: 1rem;
-            border-radius: 10px;
-            font-weight: bold;
-            height: 4rem;
-        }
+    &__submit {
+      background-color: lightsalmon;
+      width: 40%;
+      margin: auto;
+      margin-top: 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      height: 4rem;
     }
+  }
 }
 
 @media screen and (max-width: 812px) and (orientation: landscape) {
-    .registration-form {
-      // transform: rotate(-90deg);
-    }
-
-    input{
-        width: 100%;
-    }
+  .registration-form {
+    // transform: rotate(-90deg);
   }
-  
+
+  input {
+    width: 100%;
+  }
+}

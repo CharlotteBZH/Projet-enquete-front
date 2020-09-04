@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import Registration from "../components/Registration"
 import {
   registrationInputChange,
-  registrationSubmit
+  registrationSubmit,
+  openMenu,
+  onMute,
 } from "../store/action";
 
 const mapState = (state) => ({
@@ -11,7 +13,8 @@ const mapState = (state) => ({
   checkMail: state.user.checkMail,
   pwd: state.user.pwd,
   checkPwd: state.user.checkPwd,
-
+  open: state.open,
+  mute: state.mute,
 });
 
 const mapDispatch = (dispatch) => ({
@@ -20,6 +23,12 @@ const mapDispatch = (dispatch) => ({
   },
   onFormRegistration: () => {
     dispatch(registrationSubmit());
+  },
+  onOpenMenu: () => {
+    dispatch(openMenu());
+  },
+  onClickMute: () => {
+    dispatch(onMute());
   },
 });
 
