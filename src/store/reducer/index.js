@@ -255,33 +255,22 @@ let setCompter = (oldState) => {
       //state.counter.characterCounter++;
       
       if(state.counter.questionCounter < state.question.length) {
-        console.log("question incrementation");
-      state.counter.questionCounter++;
-      //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
-      } else if (state.counter.questionCounter === state.question.length ||
-      (state.question.length === 0 && state.counter.characterCounter === state.character.length)) {
-        //state.counter.shouldDisplayQuestion = false;
+          console.log("question incrementation");
+        state.counter.questionCounter++;
+        //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
+        } else if (state.counter.questionCounter === state.question.length ||
+        (state.question.length === 0 && state.counter.characterCounter === state.character.length)) {
+          state.counter.shouldDisplayQuestion = false;
 
-        console.log("character incrementation");
-        //state.counter.chapterCounter++;
-        //state.counter.situationCounter++;
-        state.counter.questionCounter = 1;
-        //state.counter.storyCounter = 1;
-        state.counter.characterCounter++;
+          console.log("character incrementation");
+          state.counter.chapterCounter++;
+          state.counter.situationCounter++;
+          state.counter.questionCounter = 1;
+          state.counter.storyCounter = 1;
+          state.counter.characterCounter++;
+        }
       }
-      
-    }else if (state.counter.characterCounter === state.chapter.length ||
-      (state.chapter.length === 0 && state.counter.storyCounter === state.storytelling.length)) {
-        state.counter.shouldDisplayQuestion = false;
-
-        console.log("chapter incrementation");
-        state.counter.chapterCounter++;
-        state.counter.situationCounter++;
-        state.counter.questionCounter = 1;
-        state.counter.storyCounter = 1;
-        state.counter.characterCounter = 1;
-      }
-  }
+    }
   else{
     console.log("plus de story et pas de character");
     state.counter.shouldDisplayQuestion = false;
