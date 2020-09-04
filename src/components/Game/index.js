@@ -35,8 +35,7 @@ const Game = ({
   shouldDisplayQuestion,
   shouldDisplayChapter
 }) => {
-  //console.log("character : ",character[].name)
-  console.log('character', character);
+
   let characterToDisplay = {};
   if (shouldDisplayQuestion) {
     characterToDisplay = character.find((char) => {
@@ -44,6 +43,7 @@ const Game = ({
     })
     console.log(characterToDisplay)
   }
+
   return (
     <div className="game">
 
@@ -52,7 +52,9 @@ const Game = ({
         {mute === true && <iframe title="mute"></iframe>}
       </div>
       <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
+
       {shouldDisplayQuestion && <img src={characterToDisplay['character.picture']} alt={characterToDisplay['character.name']} />}
+
       <div className="header">
         <div className="menuButton">
           <Menu
@@ -66,6 +68,7 @@ const Game = ({
           <Alias />
         </div>
       </div>
+
       {shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} character={characterToDisplay['character.name']} />)}
       {!shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} placeName={place.placeName} />)}
       <Headband
@@ -80,6 +83,8 @@ const Game = ({
         hide={hide}
         shouldDisplayQuestion={shouldDisplayQuestion}
       />
+
+      {!shouldDisplayChapter && <End />}
     </div>
   );
 
@@ -88,7 +93,7 @@ const Game = ({
 export default Game;
 
 const Tag = ({ placeName, character, shouldDisplayQuestion }) => {
-  console.log(character)
+
   return (
     <div className="tag">
       {shouldDisplayQuestion && (<h2>{character}</h2>)}
@@ -100,8 +105,8 @@ const Tag = ({ placeName, character, shouldDisplayQuestion }) => {
 const Headband = ({
   storytelling,
   next,
-  question,
   character,
+  question,
   toggleQuestionResponse,
   hide,
   shouldDisplayQuestion
@@ -109,30 +114,6 @@ const Headband = ({
 
   return (
     <div className="headbandAll">
-      {shouldDisplayQuestion && (
-        <div className="contexte">
-          {/* <img src={character.characterPicture} alt={character.characterName}/> */}
-          <Selection
-            question={question}
-            toggleQuestionResponse={toggleQuestionResponse}
-            hide={hide}
-          />
-          <ButtonNext next={next} />
-        </div>
-      )}
-      {!shouldDisplayQuestion && (
-        <div className="interrogatoire">
-          {<Text sentence={storytelling.sentence} />}
-          <ButtonNext next={next} />
-        </div>
-      )}
-    </div>
-  )
-};
-
-
-/*return (
-    <div className="headband">
       {shouldDisplayQuestion && (
         <div className="headband">
           <Selection
@@ -151,15 +132,7 @@ const Headband = ({
       )}
     </div>
   )
-*/
-
-
-
-
-
-
-
-
+};
 
 const Text = ({ sentence }) => {
   return (

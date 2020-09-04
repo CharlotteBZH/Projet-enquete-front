@@ -10,16 +10,17 @@ import {
   GET_CHAPTER_SUCCESS,
   GET_CHAPTER_ERROR,
   GET_NEXT,
-  GET_CHARACTER_SUCCESS,
-  GET_CHARACTER_ERROR,
   GET_STORYTELLING_SUCCESS,
   GET_STORYTELLING_ERROR,
   OPEN_MENU,
   GET_QUESTION_SUCCESS,
   GET_QUESTION_ERROR,
   TOGGLE_QUESTION_RESPONSE,
-  ON_MUTE
+  ON_MUTE,
+  GET_CHARACTER_SUCCESS,
+  GET_CHARACTER_ERROR
 } from "../action";
+
 const initialState = {
   user:
   {
@@ -29,26 +30,28 @@ const initialState = {
     checkMail: "",
     pwd: '',
     checkPwd: "",
-    isLogged: true,
-    //isLogged: false,
+    isLogged: false,
     error: ''
   },
+
   character: [],
   hide: false,
   place: {},
   chapter: {},
-  question: [
-  ],
+  question: [],
   storytelling: [
     {
       id: "",
       sentence: "",
     },
   ],
+
   mute: false,
   loading: false,
   open: false,
   disconnected: false,
+
+
   counter: {
     chapterCounter: 1,
     storyCounter: 1,
@@ -56,8 +59,10 @@ const initialState = {
     situationCounter: 1,
     characterCounter: 1,
     shouldDisplayQuestion: false,
+    shouldDisplayChapter: true
   },
 };
+
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case ON_MUTE:
@@ -65,16 +70,19 @@ export default (state = initialState, action = {}) => {
         ...state,
         mute: !state.mute,
       };
+
     case TOGGLE_QUESTION_RESPONSE:
       return {
         ...state,
         hide: !state.hide,
       };
+
     case OPEN_MENU:
       return {
         ...state,
         open: !state.open,
       };
+
     case GET_CHAPTER:
       return {
         ...state,
@@ -96,19 +104,23 @@ export default (state = initialState, action = {}) => {
           },
         ],
       };
+
     case GET_CHAPTER_ERROR:
       return {
         ...state,
       };
+
     case GET_STORYTELLING_SUCCESS:
       return {
         ...state,
         storytelling: action.payload,
       };
+
     case GET_STORYTELLING_ERROR:
       return {
         ...state,
       };
+
     case GET_NEXT:
       return {
         ...state,
@@ -118,6 +130,7 @@ export default (state = initialState, action = {}) => {
           ...setCompter(state)
         },
       };
+
     case GET_CHARACTER_SUCCESS:
       console.log("toto : ", action.payload);
       return {
@@ -130,6 +143,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
       };
+
     case GET_QUESTION_SUCCESS:
       return {
         ...state,
@@ -140,6 +154,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
       };
+
     case LOGIN_SUBMIT:
       return {
         ...state,
@@ -179,6 +194,7 @@ export default (state = initialState, action = {}) => {
         disconnected: true,
         user: {}
       };
+
     case REGISTRATION_SUBMIT:
       return {
         ...state,
@@ -210,36 +226,49 @@ export default (state = initialState, action = {}) => {
         user: {},
         isLogged: false
       };
+
     default:
       return state;
   }
 };
+
 let setCompter = (oldState) => {
   const state = { ...oldState };
-  console.log("question : ", state.question)
-  if (state.counter.storyCounter < state.storytelling.length) {
-    //alert("story incrementation")
-    state.counter.storyCounter++;
-    state.counter.shouldDisplayQuestion = false;
-    // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
-  } else if ((state.counter.storyCounter === state.storytelling.length) && (state.question.length) && !state.counter.shouldDisplayQuestion) {
-    state.counter.shouldDisplayQuestion = true
+  console.log("question : ", state.question);
+
+  if (state.counter.chapterCounter !== 18) {
+    state.counter.shouldDisplayChapter = true;
+    if (state.counter.storyCounter < state.storytelling.length) {
+      //alert("story incrementation")
+      state.counter.storyCounter++;
+      state.counter.shouldDisplayQuestion = false;
+      // Vérifier si storyCounter === longueur tableau - 1 && questions.length 
+    } else if ((state.counter.storyCounter === state.storytelling.length) && (state.question.length) && !state.counter.shouldDisplayQuestion) {
+      state.counter.shouldDisplayQuestion = true
+    }
+
+    else if (state.counter.questionCounter < state.question.length) {
+      //alert("question incrementation")
+      state.counter.questionCounter++;
+      //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
+    } else if (state.counter.questionCounter === state.question.length ||
+      (state.question.length === 0 && state.counter.storyCounter === state.storytelling.length)) {
+      state.counter.shouldDisplayQuestion = false;
+
+      //alert("chapter incrementation")
+      state.counter.chapterCounter++;
+      state.counter.situationCounter++;
+      state.counter.questionCounter = 1;
+      state.counter.storyCounter = 1;
+    }
+
+    console.log("chapterSortie : ", state.counter.chapterCounter);
+    console.log("storySortie : ", state.counter.storyCounter);
+    console.log("QuestionSortie : ", state.counter.questionCounter);
+    return state.counter;
+
+  } else {
+    state.counter.shouldDisplayChapter = false;
+    return state.counter;
   }
-  else if (state.counter.questionCounter < state.question.length) {
-    //alert("question incrementation")
-    state.counter.questionCounter++;
-    //Vérifier si arrivé au bout des questions || (pas de question && aubout des story
-  } else if (state.counter.questionCounter === state.question.length ||
-    (state.question.length === 0 && state.counter.storyCounter === state.storytelling.length)) {
-    state.counter.shouldDisplayQuestion = false;
-    //alert("chapter incrementation")
-    state.counter.chapterCounter++;
-    state.counter.situationCounter++;
-    state.counter.questionCounter = 1;
-    state.counter.storyCounter = 1;
-  }
-  console.log("chapterSortie : ", state.counter.chapterCounter);
-  console.log("storySortie : ", state.counter.storyCounter);
-  console.log("QuestionSortie : ", state.counter.questionCounter);
-  return state.counter;
-}
+};

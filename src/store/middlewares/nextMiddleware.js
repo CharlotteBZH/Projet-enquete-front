@@ -76,4 +76,3 @@ const nextMiddleware = (store) => (next) => (action) => {
 };
 
 export default nextMiddleware;
-
