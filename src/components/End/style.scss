@@ -1,0 +1,67 @@
+.end{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../img/photoplage.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+  
+  .resolution{
+    background-color:#d4d4d5e7 ;
+    padding:5rem;
+    width:65%;
+    text-align: justify;
+    font-size:1.8rem;
+    text-align: center;
+  }
+  
+  .para1{
+      animation-name: texte;
+      animation-duration: 6s;
+      animation-timing-function: ease-in;
+  }
+  .para2{
+    animation-name: texte;
+    animation-duration: 24s;
+    animation-timing-function: ease-in;
+    
+  }
+  .para3{
+    animation-name: texte;
+    animation-duration: 48s; 
+    animation-timing-function: ease-in;
+  }
+  .para4{
+    animation-name: texte;
+    animation-duration: 72s; 
+    animation-timing-function: ease-in;
+  }
+  .para5{
+    animation-name: texte;
+    animation-duration: 96s; 
+    animation-timing-function: ease-in;
+  }
+  .para6{
+    animation-name: texte;
+    animation-duration: 120s;
+    animation-timing-function: ease-in;
+  }
+  .para7{
+    animation-name: texte;
+    animation-duration: 144s;
+    animation-timing-function: ease-in;
+  }
+  
+  .para1,.para2,.para3,.para4,.para5,.para6,.para7{
+    padding-top:2rem;
+    line-height: 3rem;
+  }
+  
+  @keyframes texte {
+      0%   {opacity: 0;}
+      25%  {opacity: 0;}
+      50%  {opacity: 0.7;}
+      100% {opacity: 1;}
+  }
