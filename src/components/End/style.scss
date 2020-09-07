@@ -6,13 +6,13 @@
     background-size: 100%;
     background-repeat: no-repeat;
     height: 100vh;
-    margin-top:10px;
+    margin-top:1px;
   }
   
   .resolution{
-    background-color:#d4d4d5b8 ;
+    background-color:rgba(198, 206, 209, .5) ;
     color: black;
-    padding:5rem;
+    padding:0 5rem 0 5rem;
     width:90%;
     text-align: justify;
     font-size:1.8rem;
@@ -50,14 +50,15 @@
     animation-duration: 120s;
     animation-timing-function: ease-in;
   }
+  /*
   .para7{
     animation-name: texte;
     animation-duration: 144s;
     animation-timing-function: ease-in;
-  }
+  }*/
   
   .para1,.para2,.para3,.para4,.para5,.para6,.para7{
-    padding-top:2rem;
+    padding-top: 2rem;
     line-height: 3rem;
   }
   
