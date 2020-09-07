@@ -51,8 +51,9 @@ const Game = ({
         {mute === false && <iframe title="music" src={soundfile} allow="autoplay"></iframe>}
         {mute === true && <iframe title="mute"></iframe>}
       </div>
+      <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
 
-      {shouldDisplayQuestion && <img src={characterToDisplay['character.picture']} alt={characterToDisplay['character.name']} />}
+
 
       <div className="header">
         <div className="menuButton">
@@ -67,6 +68,7 @@ const Game = ({
           <Alias />
         </div>
       </div>
+
       {shouldDisplayChapter &&
         <div>
           {shouldDisplayQuestion && (<Tag shouldDisplayQuestion={shouldDisplayQuestion} character={characterToDisplay['character.name']} />)}
@@ -85,8 +87,8 @@ const Game = ({
           />
         </div>
       }
+      {shouldDisplayQuestion && <img className="character" src={characterToDisplay['character.picture']} alt={characterToDisplay['character.name']} />}
       {!shouldDisplayChapter && <End />}
-      <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
     </div>
   );
 
