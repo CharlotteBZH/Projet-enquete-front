@@ -2,16 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../../img/photoplage.jpg);
+    //background-image: url(../../img/photoplage.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     height: 100vh;
+    margin-top:10px;
   }
   
   .resolution{
-    background-color:#d4d4d5e7 ;
+    background-color:#d4d4d5b8 ;
+    color: black;
     padding:5rem;
-    width:65%;
+    width:90%;
     text-align: justify;
     font-size:1.8rem;
     text-align: center;
