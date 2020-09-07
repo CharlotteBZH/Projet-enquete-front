@@ -51,7 +51,6 @@ const Game = ({
         {mute === false && <iframe title="music" src={soundfile} allow="autoplay"></iframe>}
         {mute === true && <iframe title="mute"></iframe>}
       </div>
-      <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
 
       {shouldDisplayQuestion && <img src={characterToDisplay['character.picture']} alt={characterToDisplay['character.name']} />}
 
@@ -87,6 +86,7 @@ const Game = ({
         </div>
       }
       {!shouldDisplayChapter && <End />}
+      <img className="picturesBack" alt={place.placeName} src={place.placePicture} />
     </div>
   );
 

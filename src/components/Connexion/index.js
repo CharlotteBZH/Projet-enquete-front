@@ -47,6 +47,7 @@ const Connexion = ({
 
       <form className="connexion-form" onSubmit={handleSubmit}>
         <input
+          onFocus
           type="mail"
           name="mail"
           value={mail}
