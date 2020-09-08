@@ -175,8 +175,8 @@ export default (state = initialState, action = {}) => {
           ...state.user,
           ...action.payload,
           isLogged: true,
-          disconnected: false,
-        }
+        },
+        disconnected: false,
       };
     case LOGIN_ERROR:
       return {
@@ -215,7 +215,8 @@ export default (state = initialState, action = {}) => {
           ...state.user,
           ...action.payload,
           isLogged: true,
-        }
+        },
+        disconnected: false,
       };
     case REGISTRATION_ERROR:
       return {
@@ -224,7 +225,8 @@ export default (state = initialState, action = {}) => {
         error: action.payload,
         pseudo: '',
         user: {},
-        isLogged: false
+        isLogged: false,
+        disconnected: true,
       };
 
     default:
