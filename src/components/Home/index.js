@@ -46,7 +46,7 @@ const Home = ({
             avec elle en arrivant.
           </p>
           <p>
-            Le lendemain elle est retrouvée morte.Et le seul suspect aux yeux de
+            Le lendemain elle est retrouvée morte. Et le seul suspect aux yeux de
             tous, c'est TOI.{" "}
           </p>
           <p>Comment prouveras tu ton innocence ...?</p>
